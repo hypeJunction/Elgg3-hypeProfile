@@ -1,12 +1,12 @@
 {
-	"name": "hypeGroups",
-	"version": "1.0.5",
+	"name": "hypeProfile",
+	"version": "1.0.0",
 	"license": "GPL-2.0",
     "repository": {
         "type": "git",
-        "url": "git@github.com:hypeJunctionPro/Elgg3-hypeGroups.git",
+        "url": "git@github.com:hypeJunctionPro/Elgg3-hypeProfile.git",
         "owner": "hypeJunctionPro",
-        "repo": "Elgg3-hypeGroups"
+        "repo": "Elgg3-hypeProfile"
     },
     "dependencies": {
         "curlrequest": "^1.0.1",
