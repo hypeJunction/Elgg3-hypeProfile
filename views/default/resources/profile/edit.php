@@ -22,7 +22,10 @@ $subtype = $entity->getSubtype();
 $svc = elgg()->{'posts.model'};
 /* @var $svc \hypeJunction\Post\Model */
 
-$form_vars = $svc->getFormVars($entity, $request->getParams());
+$vars = $request->getParams();
+$vars['context'] = \hypeJunction\Fields\Field::CONTEXT_EDIT_FORM;
+
+$form_vars = $svc->getFormVars($entity, $vars);
 
 $content = elgg_view_form('post/save', [
 	'class' => 'post-form',

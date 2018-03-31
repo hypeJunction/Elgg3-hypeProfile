@@ -19,7 +19,9 @@ $entity = new ElggUser();
 $svc = elgg()->{'posts.model'};
 /* @var $svc \hypeJunction\Post\Model */
 
-$form_vars = $svc->getFormVars($entity, $request->getParams());
+$vars = $request->getParams();
+$vars['context'] = \hypeJunction\Fields\Field::CONTEXT_CREATE_FORM;
+$form_vars = $svc->getFormVars($entity, $vars);
 
 $sticky = elgg_get_sticky_values('register');
 elgg_clear_sticky_form('register');
