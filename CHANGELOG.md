@@ -1,3 +1,13 @@
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.0.2...1.0.3) (2018-04-03)
+
+
+### Bug Fixes
+
+* **composer:** add missing dependencies ([6e540e3](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/6e540e3))
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.0.1...1.0.2) (2018-03-31)
 
