@@ -1,3 +1,13 @@
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.0.4...1.0.5) (2018-04-29)
+
+
+### Bug Fixes
+
+* **filters:** correctly register filters ([02cd14b](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/02cd14b))
+
+
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.0.3...1.0.4) (2018-04-29)
 
