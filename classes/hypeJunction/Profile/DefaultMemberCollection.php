@@ -108,10 +108,9 @@ class DefaultMemberCollection extends Collection {
 	 */
 	public function getSortOptions() {
 		return [
-			Alpha::id() => Alpha::class,
-			TimeCreated::id() => TimeCreated::class,
-			FriendCount::id() => FriendCount::class,
-			IsOnline::id() => IsOnline::class,
+			Alpha::class,
+			TimeCreated::class,
+			FriendCount::class,
 		];
 	}
 
@@ -120,9 +119,10 @@ class DefaultMemberCollection extends Collection {
 	 */
 	public function getFilterOptions() {
 		return [
-			All::id() => All::class,
-			IsFriend::id() => IsFriend::class,
-			IsNotFriend::id() => IsNotFriend::class,
+			All::class,
+			IsOnline::class,
+			IsFriend::class,
+			IsNotFriend::class,
 		];
 	}
 

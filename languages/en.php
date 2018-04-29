@@ -119,4 +119,6 @@ return [
 	'sort:user:filter:all' => 'All',
 	'sort:user:filter:is_friend' => 'Friends',
 	'sort:user:filter:is_not_friend' => 'Not Friends',
+	'sort;user:filter:is_online' => 'Online Users',
+	'sort:object:filter:placeholder:guids' => '... or choose users',
 ];
