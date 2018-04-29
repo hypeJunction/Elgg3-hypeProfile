@@ -25,6 +25,12 @@
 	</requires>
 
     <requires>
+        <type>priority</type>
+        <plugin>profile</plugin>
+        <priority>after</priority>
+    </requires>
+
+    <requires>
         <type>plugin</type>
         <name>hypeLists</name>
     </requires>
@@ -33,6 +39,18 @@
         <type>plugin</type>
         <name>hypePost</name>
     </requires>
+
+    <suggests>
+        <type>plugin</type>
+        <name>hypeActivity</name>
+    </suggests>
+
+    <suggests>
+        <type>priority</type>
+        <plugin>hypeActivity</plugin>
+        <priority>before</priority>
+    </suggests>
+
 
     <provides>
         <type>plugin</type>
