@@ -1,3 +1,13 @@
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.0.3...1.0.4) (2018-04-29)
+
+
+### Bug Fixes
+
+* **manifest:** document priority requirements ([d6710d0](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/d6710d0))
+
+
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.0.2...1.0.3) (2018-04-03)
 
