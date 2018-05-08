@@ -8,6 +8,11 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 
 class ProfileField extends Field {
 
+	const FIELD_PICKER = 'field_picker';
+	const GLOBAL_PICKER = 'global_picker';
+	const FORCE_PUBLIC = 'public';
+	const FORCE_LOGGED_IN = 'logged_in';
+
 	/**
 	 * {@inheritdoc}
 	 */
@@ -21,28 +26,33 @@ class ProfileField extends Field {
 		}
 
 		$main = $this->normalize($entity);
-		$class = elgg_extract_class($main, '', '#class');
-		unset($main['#class']);
 
 		$annotations = $this->getAnnotation($entity);
 
 		if ($context == self::CONTEXT_EDIT_FORM) {
-			$fields = [
-				$main,
-				[
+			$field_access_conf = elgg_get_plugin_setting('field_access', 'hypeProfile');
+
+			if ($field_access_conf == self::FIELD_PICKER) {
+				$class = elgg_extract_class($main, '', '#class');
+				unset($main['#class']);
+
+				$fields = [$main];
+				$fields[] = [
 					'#type' => 'access',
 					'name' => "accesslevel[$this->name]",
 					'value' => $annotations ? $annotations[0]->access_id : get_default_access($entity),
 					'entity' => $entity,
 					'class' => 'profile-access-input-field',
-				]
-			];
+				];
 
-			return elgg_view_field([
-				'#type' => 'fieldset',
-				'#class' => $class,
-				'fields' => $fields,
-			]);
+				return elgg_view_field([
+					'#type' => 'fieldset',
+					'#class' => $class,
+					'fields' => $fields,
+				]);
+			} else {
+				return elgg_view_field($main);
+			}
 		} else {
 			return elgg_view_field($main);
 		}
@@ -103,12 +113,30 @@ class ProfileField extends Field {
 			'limit' => false
 		]);
 
-		$access = get_input('accesslevel') ? : [];
+		$field_access_conf = elgg_get_plugin_setting('field_access', 'hypeProfile');
 
 		if (!is_null($value) && ($value !== '')) {
-			$access_id = ACCESS_PUBLIC;
-			if (isset($access[$this->name])) {
-				$access_id = (int) $access[$this->name];
+			$access_id = ACCESS_PRIVATE;
+
+			switch ($field_access_conf) {
+				case ProfileField::GLOBAL_PICKER :
+					$access_id = $parameters->get('profile_field_access', ACCESS_PRIVATE);
+					break;
+
+				case ProfileField::FIELD_PICKER :
+					$access = get_input('accesslevel') ? : [];
+					if (isset($access[$this->name])) {
+						$access_id = (int) $access[$this->name];
+					}
+					break;
+
+				case ProfileField::FORCE_PUBLIC :
+					$access_id = ACCESS_PUBLIC;
+					break;
+
+				case ProfileField::FORCE_LOGGED_IN :
+					$access_id = ACCESS_LOGGED_IN;
+					break;
 			}
 
 			if (!is_array($value)) {

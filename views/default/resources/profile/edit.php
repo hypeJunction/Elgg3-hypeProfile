@@ -29,7 +29,7 @@ $form_vars = $svc->getFormVars($entity, $vars);
 
 $content = elgg_view_form('post/save', [
 	'class' => 'post-form',
-	'actions' => elgg_generate_action_url('profile/edit'),
+	'action' => elgg_generate_action_url('profile/edit'),
 ], $form_vars);
 
 if (elgg_is_xhr()) {

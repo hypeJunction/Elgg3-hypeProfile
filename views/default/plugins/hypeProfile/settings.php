@@ -1,5 +1,7 @@
 <?php
 
+use hypeJunction\Profile\ProfileField;
+
 $entity = elgg_extract('entity', $vars);
 
 echo elgg_view_field([
@@ -166,3 +168,17 @@ echo elgg_view_field(array(
 	'#label' => elgg_echo('settings:forms:register:welcome_email'),
 	'#help' => elgg_echo('settings:forms:register:welcome_email:help'),
 ));
+
+echo elgg_view_field([
+	'#type' => 'select',
+	'name' => 'params[field_access]',
+	'value' => $entity->field_access,
+	'options_values' => array(
+		ProfileField::FIELD_PICKER => elgg_echo('settings:forms:field_access:field_picker'),
+		ProfileField::GLOBAL_PICKER => elgg_echo('settings:forms:field_access:global_picker'),
+		ProfileField::FORCE_LOGGED_IN => elgg_echo('settings:forms:field_access:logged_in'),
+		ProfileField::FORCE_PUBLIC => elgg_echo('settings:forms:field_access:public'),
+	),
+	'#label' => elgg_echo('settings:forms:field_access'),
+	'#help' => elgg_echo('settings:forms:field_access:help'),
+]);

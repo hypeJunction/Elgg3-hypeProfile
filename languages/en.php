@@ -121,4 +121,16 @@ return [
 	'sort:user:filter:is_not_friend' => 'Not Friends',
 	'sort;user:filter:is_online' => 'Online Users',
 	'sort:object:filter:placeholder:guids' => '... or choose users',
+
+	'settings:forms:field_access' => 'Profile Field Access',
+	'settings:forms:field_access:help' => 'Specify how profile field access is determined',
+	'settings:forms:field_access:public' => 'Make all profile fields public',
+	'settings:forms:field_access:logged_in' => 'Show all profile fields to registered users only',
+	'settings:forms:field_access:field_picker' => 'Let users choose access level for each field',
+	'settings:forms:field_access:global_picker' => 'Let users choose access level for all fields at once',
+
+	'field:user:user:profile_field_access' => 'Profile Data Visibility',
+	'field:user:user:profile_field_access:help' => 'Select visibility level that should be applied to profile data',
+
+	'success:user:save' => 'Profile details have been successfully saved',
 ];

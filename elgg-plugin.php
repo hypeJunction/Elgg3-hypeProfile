@@ -20,6 +20,9 @@ return [
 		]
 	],
 	'actions' => [
+		'profile/edit' => [
+			'controller' => \hypeJunction\Post\SavePostAction::class,
+		],
 		'validation/is_valid_username' => [
 			'access' => 'public',
 			'controller' => \hypeJunction\Profile\IsValidUsername::class,
@@ -50,5 +53,6 @@ return [
 		'email_validation' => true,
 		'first_last_name' => true,
 		'hide_password_repeat' => true,
+		'field_access' => 'field_picker',
 	],
 ];

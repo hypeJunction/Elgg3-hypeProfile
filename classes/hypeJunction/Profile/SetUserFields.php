@@ -294,6 +294,18 @@ class SetUserFields {
 			'is_create_field' => true,
 		]));
 
+		$field_access_conf = elgg_get_plugin_setting('field_access', 'hypeProfile');
+		if ($field_access_conf == ProfileField::GLOBAL_PICKER) {
+			$fields->add('profile_field_access', new MetaField([
+				'type' => 'access',
+				'is_profile_field' => false,
+				'is_edit_field' => true,
+				'is_create_field' => false,
+				'priority' => 1,
+				'required' => true,
+			]));
+		}
+
 		return $fields;
 	}
 }
