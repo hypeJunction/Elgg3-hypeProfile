@@ -1,3 +1,13 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.0.5...1.1.0) (2018-05-08)
+
+
+### Features
+
+* **access:** provide more flexibility in how profile field access is determined ([87c6c2c](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/87c6c2c))
+
+
+
 <a name="1.0.5"></a>
 ## [1.0.5](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.0.4...1.0.5) (2018-04-29)
 
