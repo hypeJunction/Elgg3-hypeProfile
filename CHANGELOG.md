@@ -1,3 +1,13 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.1.0...1.2.0) (2018-06-29)
+
+
+### Features
+
+* **core:** updates and fixes ([6647721](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/6647721))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.0.5...1.1.0) (2018-05-08)
 
