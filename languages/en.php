@@ -119,8 +119,8 @@ return [
 	'sort:user:filter:all' => 'All',
 	'sort:user:filter:is_friend' => 'Friends',
 	'sort:user:filter:is_not_friend' => 'Not Friends',
-	'sort;user:filter:is_online' => 'Online Users',
-	'sort:object:filter:placeholder:guids' => '... or choose users',
+	'sort:user:filter:is_online' => 'Online Users',
+	'sort:user:filter:placeholder:guids' => '... or choose users',
 
 	'settings:forms:field_access' => 'Profile Field Access',
 	'settings:forms:field_access:help' => 'Specify how profile field access is determined',
