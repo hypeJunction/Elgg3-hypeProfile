@@ -11,7 +11,7 @@ return [
 	'settings:forms:register:password:very_strong' => 'Very strong (score 4)',
 
 	'settings:forms:register:email_validation' => 'Email Validation',
-	'settings:forms:register:email_validation:help' => 'Require email validation on registration',
+	'settings:forms:register:email_validation:help' => 'If enabled, users will be requested to enter a code sent to them via email to validate that their email account is legit. This eliminates the complicated workflow implemented in the uservalidationbyemail plugin, namely thousands of unvalidated spam accounts are no longer created.',
 
 	'settings:forms:register:first_last_name' => 'First and Last name',
 	'settings:forms:register:first_last_name:help' => 'Replace Display name field with First and Last name fields',
