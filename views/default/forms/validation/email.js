@@ -11,7 +11,7 @@ define(function (require) {
 		validateString: function (value, url) {
 			var promise = $.Deferred();
 
-			var ajax = new Ajax();
+			var ajax = new Ajax(false);
 			ajax.path(url, {
 				data: {
 					email: value
