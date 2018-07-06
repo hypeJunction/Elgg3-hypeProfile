@@ -51,10 +51,14 @@
         <priority>before</priority>
     </suggests>
 
-
     <provides>
         <type>plugin</type>
         <name>forms_register</name>
     </provides>
+
+    <conflicts>
+        <type>plugin</type>
+        <name>uservalidationbyemail</name>
+    </conflicts>
 
 </plugin_manifest>
