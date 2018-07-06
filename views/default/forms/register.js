@@ -7,53 +7,29 @@ define(function(require) {
 	var spinner = require('elgg/spinner');
 	require('forms/validation');
 
-	$('.elgg-form-register').parsley();
+	var $form = $('.elgg-form-register');
 
-	$(document).on('submit', '.elgg-form-register', function(e) {
+	$form.parsley();
 
-		e.preventDefault();
+	var Form = require('ajax/Form');
+	var form = new Form($form);
 
-		var $form = $(this);
-		var ajax;
-
-		$form.find('[type="submit"]').prop('disabled', true);
-
+	form.onSubmit(function(resolve, reject) {
 		var $validation = $form.find('[name="email_validation"]');
 
 		if ($validation.length && (!$validation.val() && $validation.data('required'))) {
-			$('.elgg-form-register').parsley();
+			var ajax = new Ajax();
 			ajax.action('validation/send_code', {
 				data: ajax.objectify($form)
 			}).done(function() {
 				$validation.closest('.elgg-field').removeClass('hidden').fadeIn();
 				$validation.eq(0).focus();
-				$form.find('[type="submit"]').prop('disabled', false);
 			});
 
-			return false;
+			return reject(new Error('Email validation required'));
 		}
 
-		ajax = new Ajax();
-		ajax.action($form.attr('action'), {
-			data: ajax.objectify($form),
-			beforeSend: function() {
-				spinner.start();
-				$form.find('[type="submit"]').prop('disabled', true);
-			}
-		}).done(function(data, statusText, xhr) {
-			spinner.stop();
-			if (xhr.AjaxData.status === -1) {
-				$form.find('[type="submit"]').prop('disabled', false);
-				return;
-			}
-
-			if ($form.closest('#colorbox').length) {
-				lightbox.close();
-			}
-
-			ajax.forward(xhr.AjaxData.forward_url || data.forward_url || elgg.normalize_url(''));
-		}).fail(function() {
-			$form.find('[type="submit"]').prop('disabled', false);
-		});
+		return resolve();
 	});
+
 });
