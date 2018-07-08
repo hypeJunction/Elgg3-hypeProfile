@@ -7,7 +7,7 @@ $entity = elgg_extract('entity', $vars);
 echo elgg_view_field([
 	'#type' => 'select',
 	'name' => 'params[email_validation]',
-	'value' => $entity->first_last_name,
+	'value' => $entity->email_validation,
 	'options_values' => array(
 		0 => elgg_echo('option:no'),
 		1 => elgg_echo('option:yes'),

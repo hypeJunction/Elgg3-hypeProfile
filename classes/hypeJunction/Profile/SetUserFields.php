@@ -43,6 +43,7 @@ class SetUserFields {
 				'is_profile_field' => false,
 				'is_edit_field' => true,
 				'is_create_field' => true,
+				'is_export_field' => true,
 				'data-parsley-trigger' => 'input change',
 				'data-parsley-debounce' => 1000,
 				'value' => function () {
@@ -74,6 +75,7 @@ class SetUserFields {
 				'is_profile_field' => false,
 				'is_edit_field' => true,
 				'is_create_field' => true,
+				'is_export_field' => true,
 				'required' => true,
 				'maxlength' => 50,
 				'data-parsley-trigger' => 'input change',
@@ -92,6 +94,7 @@ class SetUserFields {
 			'is_profile_field' => false,
 			'is_create_field' => true,
 			'is_edit_field' => false,
+			'is_export_field' => true,
 			'data-parsley-emailaccount' => $email_account_validator,
 			'data-parsley-trigger' => 'input change',
 			'data-parsley-debounce' => 1000,
@@ -115,6 +118,7 @@ class SetUserFields {
 				'is_profile_field' => false,
 				'is_create_field' => true,
 				'is_edit_field' => false,
+				'is_export_field' => true,
 				'minlength' => elgg_get_config('minusername') ? : 4,
 				'data-parsley-validusername' => $username_validator,
 				'data-parsley-availableusername' => $username_account_validator,
@@ -165,6 +169,7 @@ class SetUserFields {
 				'is_edit_field' => true,
 				'is_create_field' => false,
 				'priority' => 500,
+				'is_export_field' => true,
 			]));
 		}
 
@@ -183,6 +188,7 @@ class SetUserFields {
 			'is_profile_field' => false,
 			'is_edit_field' => true,
 			'is_create_field' => false,
+			'is_export_field' => true,
 			'priority' => 400,
 		]));
 
@@ -237,11 +243,16 @@ class SetUserFields {
 				'type' => 'checkbox',
 				'#label' => false,
 				'label' => $label,
+				'label_tag' => 'label',
 				'is_profile_field' => false,
 				'is_edit_field' => false,
 				'is_create_field' => true,
+				'is_export_field' => true,
 				'priority' => 980,
 				'required' => true,
+				'value' => function() {
+					return time();
+				},
 			]));
 		}
 
@@ -258,11 +269,16 @@ class SetUserFields {
 				'type' => 'checkbox',
 				'#label' => false,
 				'label' => $label,
+				'label_tag' => 'label',
 				'is_profile_field' => false,
 				'is_edit_field' => false,
 				'is_create_field' => true,
+				'is_export_field' => true,
 				'priority' => 990,
 				'required' => true,
+				'value' => function() {
+					return time();
+				},
 			]));
 		}
 

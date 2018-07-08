@@ -133,4 +133,6 @@ return [
 	'field:user:user:profile_field_access:help' => 'Select visibility level that should be applied to profile data',
 
 	'success:user:save' => 'Profile details have been successfully saved',
+
+	'system_message::account:pending_approval' => 'Your account is pending approval by site\'s administrator. You will receive an email once your account is approved.'
 ];
