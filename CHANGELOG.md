@@ -1,3 +1,16 @@
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.2.0...1.2.1) (2018-07-08)
+
+
+### Bug Fixes
+
+* **admin:** clarify email validation logic for admins ([022bc7d](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/022bc7d))
+* **fields:** use correct field configuration ([6835866](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/6835866))
+* **forms:** use ajax Form api to promise email auth ([1ed355c](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/1ed355c))
+* **ux:** do not show loaders when validating form fields ([7e00c47](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/7e00c47))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.1.0...1.2.0) (2018-06-29)
 
