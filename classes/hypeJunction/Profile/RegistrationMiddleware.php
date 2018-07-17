@@ -29,7 +29,14 @@ class RegistrationMiddleware {
 		elgg_make_sticky_form('register');
 
 		$entity = new \ElggUser();
-
+		$subtype = get_input('subtype');
+		if ($subtype) {
+			$constructor = elgg_get_entity_class('user', $subtype);
+			if ($constructor && class_exists($constructor) && is_subclass_of($constructor, \ElggUser::class)) {
+				$entity = new $constructor;
+			}
+		}
+		
 		$svc = elgg()->{'posts.model'};
 		/* @var $svc Model */
 
