@@ -1,3 +1,13 @@
+<a name="1.2.3"></a>
+## [1.2.3](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.2.2...1.2.3) (2018-07-19)
+
+
+### Bug Fixes
+
+* **forms:** disable context filtering on submit button ([d24b6ee](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/d24b6ee))
+
+
+
 <a name="1.2.2"></a>
 ## [1.2.2](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.2.1...1.2.2) (2018-07-17)
 
