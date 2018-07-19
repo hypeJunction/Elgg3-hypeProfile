@@ -305,6 +305,7 @@ class SetUserFields {
 				return $entity->guid ? elgg_echo('save') : elgg_echo('register');
 			},
 			'priority' => 600,
+			'contexts' => false,
 			'is_profile_field' => false,
 			'is_edit_field' => true,
 			'is_create_field' => true,
