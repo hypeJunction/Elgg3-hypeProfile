@@ -11,7 +11,7 @@ return [
 	'settings:forms:register:password:very_strong' => 'Very strong (score 4)',
 
 	'settings:forms:register:email_validation' => 'Email Validation',
-	'settings:forms:register:email_validation:help' => 'If enabled, users will be requested to enter a code sent to them via email to validate that their email account is legit. This eliminates the complicated workflow implemented in the uservalidationbyemail plugin, namely thousands of unvalidated spam accounts are no longer created.',
+	'settings:forms:register:email_validation:help' => 'If enabled, users will be requested to confirm their email address before registering. This eliminates the complicated workflow implemented in the uservalidationbyemail plugin, namely thousands of unvalidated spam accounts are no longer created.',
 
 	'settings:forms:register:first_last_name' => 'First and Last name',
 	'settings:forms:register:first_last_name:help' => 'Replace Display name field with First and Last name fields',
@@ -91,23 +91,6 @@ return [
 	//'register:welcome_email' => '',
 	'register:welcome_email:subject' => 'Welcome to %s',
 
-	'profile:validation:email:subject' => 'Verification code for %s',
-	'profile:validation:email:message' => '
-		<p>Dear %s,</p>
-		
-		<p>Please use the following verification code to complete your registration:</p>
-		
-		<p><h1>%s</h1></p>
-	',
-
-	'profile:validation:error' => 'Your email could not be verified. The verification code has been resent to your email address',
-	'profile:validation:sent' => 'We have sent a verification code to your email. Please enter it in the verification field',
-	'profile:validation:not_sent' => 'Verification code could not be sent to your email',
-
-	'field:user:user:email_validation' => 'Verification Code',
-	'field:user:user:email_validation:help' => 'Please enter the verification code that was sent to your email',
-	'field:user:user:email_validation:placeholder' => 'Verification Code',
-
 	'edit:user:user' => 'Edit Profile',
 
 	'profile:empty' => 'Get started by providing some more information about yourself. %s',
@@ -134,5 +117,21 @@ return [
 
 	'success:user:save' => 'Profile details have been successfully saved',
 
-	'system_message::account:pending_approval' => 'Your account is pending approval by site\'s administrator. You will receive an email once your account is approved.'
+	'system_message::account:pending_approval' => 'Your account is pending approval by site\'s administrator. You will receive an email once your account is approved.',
+
+	'preregister' => 'Register',
+
+	'preregister:email' => 'Email',
+	'preregister:email:help' => 'Please enter your email address. Once you submit the form, we will send you an email with the link to confirm your email and proceed with the registration.',
+	'preregister:continue' => 'Continue',
+	'preregister:confirm' => 'Confirm Your Email',
+	'preregister:confirm:desc' => 'An email with the confirmation link was sent to %s. Please click on the link to confirm your email and proceed with the registration.',
+
+	'preregister:email:subject' => 'Please confirm your email',
+	'preregister:email:message' => '
+		Thank you for your interest in %s.
+		
+		Please follow this link to continue your registration:
+		%s
+	',
 ];

@@ -61,8 +61,3 @@ $footer = elgg_view_menu('form:actions', [
 ]);
 
 elgg_set_form_footer($footer);
-?>
-
-<script>
-	require(['forms/register']);
-</script>

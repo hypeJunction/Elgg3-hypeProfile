@@ -282,22 +282,6 @@ class SetUserFields {
 			]));
 		}
 
-		$require_validation = (bool) elgg_get_plugin_setting('email_validation', 'hypeProfile');
-		$fields->add('email_validation', new EmailValidationField([
-			'type' => $require_validation ? 'text' : 'hidden',
-			'field_class' => [
-				'profile-validation-field',
-				'hidden',
-			],
-			'is_profile_field' => false,
-			'is_edit_field' => false,
-			'is_create_field' => true,
-			'data-required' => $require_validation,
-			'data-parsley-validate' => 'false',
-			'value' => get_input('ev'),
-			'priority' => 999,
-		]));
-
 		$fields->add('submit', new ControlElement([
 			'type' => 'submit',
 			'section' => 'actions',

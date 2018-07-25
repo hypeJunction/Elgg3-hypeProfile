@@ -20,6 +20,14 @@ return [
 		]
 	],
 	'actions' => [
+		'register' => [
+			'controller' => \hypeJunction\Profile\RegisterAction::class,
+			'access' => 'public',
+		],
+		'account/preregister' => [
+			'controller' => \hypeJunction\Profile\PreRegisterAction::class,
+			'access' => 'public',
+		],
 		'profile/edit' => [
 			'controller' => \hypeJunction\Post\SavePostAction::class,
 		],
@@ -35,15 +43,26 @@ return [
 			'access' => 'public',
 			'controller' => \hypeJunction\Profile\IsAvailableEmail::class,
 		],
-		'validation/send_code' => [
-			'access' => 'public',
-			'controller' => \hypeJunction\Profile\SendVerificationCodeAction::class,
-			'middleware' => [
-				\Elgg\Router\Middleware\AjaxGatekeeper::class,
-			],
-		],
 	],
 	'routes' => [
+		'account:register' => [
+			'path' => '/register/{subtype?}',
+			'resource' => 'account/register',
+			'walled' => false,
+			'middleware' => [
+				\hypeJunction\Profile\RegistrationGatekeeper::class,
+			],
+		],
+		'account:preregister' => [
+			'path' => '/preregister/form/{subtype?}',
+			'resource' => 'account/preregister/form',
+			'walled' => false,
+		],
+		'account:preregister:confirm' => [
+			'path' => '/preregister/confirm',
+			'resource' => 'account/preregister/confirm',
+			'walled' => false,
+		],
 		'collection:user:user' => [
 			'path' => '/members',
 			'resource' => 'collection/all',

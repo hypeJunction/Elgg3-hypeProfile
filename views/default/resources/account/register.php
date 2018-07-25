@@ -1,23 +1,23 @@
 <?php
 
-if (elgg_is_logged_in()) {
-	$user = elgg_get_logged_in_user_entity();
-	$exception = new \Elgg\GatekeeperException();
-	$exception->setRedirectUrl($user->getURL());
-	throw new $exception;
-}
-
-if (elgg_get_config('allow_registration') == false) {
-	throw new \Elgg\GatekeeperException(elgg_echo('registerdisabled'));
-}
-
 $request = elgg_extract('request', $vars);
 /* @var $request \Elgg\Request */
 
-$entity = new ElggUser();
+$subtype = elgg_extract('subtype', $vars, 'user');
+$constructor = elgg_get_entity_class('user', $subtype);
+if (!$constructor || !is_subclass_of($constructor, ElggUser::class)) {
+	$constructor = ElggUser::class;
+}
 
-$svc = elgg()->{'posts.model'};
-/* @var $svc \hypeJunction\Post\Model */
+$title = elgg_echo('register');
+if (elgg_language_key_exists("register:$subtype")) {
+	$title = elgg_echo("register:$subtype");
+}
+
+$entity = new $constructor();
+/* @var $entity ElggUser */
+
+$svc = \hypeJunction\Post\Model::instance();
 
 $vars = $request->getParams();
 $vars['context'] = \hypeJunction\Fields\Field::CONTEXT_CREATE_FORM;
@@ -34,9 +34,11 @@ $content = elgg_view_form('register', [
 
 $content .= elgg_view('help/register');
 
-$shell = elgg_get_config('walled_garden') ? 'walled_garden' : 'default';
-
-$title = elgg_echo('register');
+if (elgg_is_active_plugin('hypeTheme')) {
+	$shell = 'walled_garden';
+} else {
+	$shell = elgg_get_config('walled_garden') ? 'walled_garden' : 'default';
+}
 
 $body = elgg_view_layout('default', [
 	'content' => $content,
