@@ -1,3 +1,13 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.2.3...1.3.0) (2018-07-25)
+
+
+### Features
+
+* **ux:** perform email validation before registration ([319e116](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/319e116))
+
+
+
 <a name="1.2.3"></a>
 ## [1.2.3](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.2.2...1.2.3) (2018-07-19)
 
