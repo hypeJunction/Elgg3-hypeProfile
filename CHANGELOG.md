@@ -1,3 +1,13 @@
+<a name="1.3.1"></a>
+## [1.3.1](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.3.0...1.3.1) (2018-07-27)
+
+
+### Bug Fixes
+
+* **ux:** remove display name from settings form ([da0730a](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/da0730a))
+
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.2.3...1.3.0) (2018-07-25)
 
