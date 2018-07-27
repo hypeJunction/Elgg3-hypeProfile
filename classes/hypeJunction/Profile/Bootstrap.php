@@ -78,7 +78,7 @@ class Bootstrap extends PluginBootstrap {
 	 * @return void
 	 */
 	public function ready() {
-		// TODO: Implement ready() method.
+		elgg_unextend_view('forms/usersettings/save', 'core/settings/account/name');
 	}
 
 	/**
