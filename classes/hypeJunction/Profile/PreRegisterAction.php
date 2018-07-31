@@ -30,11 +30,14 @@ class PreRegisterAction {
 		$registration_url = elgg_generate_url('account:register', [
 			'subtype' => $request->getParam('subtype'),
 		]);
-		$registration_url = elgg_http_add_url_query_elements($registration_url, array_filter([
-			'e' => $request->getParam('email'),
-			'friend_guid' => $request->getParam('friend_guid'),
-			'invitecode' => $request->getParam('invitecode'),
-		]));
+
+		$registration_url_params = (array) $request->getParam('q', []);
+
+		$registration_url_params['e'] = $request->getParam('email');
+		$registration_url_params['friend_guid'] = $request->getParam('friend_guid');
+		$registration_url_params['invitecode'] = $request->getParam('invitecode');
+
+		$registration_url = elgg_http_add_url_query_elements($registration_url, array_filter($registration_url_params));
 		$registration_url = elgg_http_get_signed_url($registration_url);
 
 		$subject = elgg_echo('preregister:email:subject');

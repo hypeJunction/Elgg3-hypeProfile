@@ -28,6 +28,16 @@ $fields = [
 	],
 ];
 
+
+$q = (array) elgg_extract('q', $vars);
+foreach ($q as $key => $val) {
+	$fields[] = [
+		'#type' => 'hidden',
+		'name' => "q[$key]",
+		'value' => $val,
+	];
+}
+
 foreach ($fields as $field) {
 	echo elgg_view_field($field);
 }

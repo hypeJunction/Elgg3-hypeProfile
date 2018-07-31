@@ -38,5 +38,13 @@ class RegistrationGatekeeper {
 				return elgg_redirect_response($url);
 			}
 		}
+
+		// unpack registration data
+		$registration_url_params = $request->getParam('q');
+		if (is_array($registration_url_params)) {
+			foreach ($registration_url_params as $key => $val) {
+				$request->setParam($key, $val);
+			}
+		}
 	}
 }
