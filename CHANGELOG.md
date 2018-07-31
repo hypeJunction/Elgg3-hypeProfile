@@ -1,3 +1,25 @@
+<a name="1.4.1"></a>
+## [1.4.1](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.3.1...1.4.1) (2018-07-31)
+
+
+### Bug Fixes
+
+* **registration:** allow passing custom parameters to registration form ([091d647](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/091d647))
+* **shell:** do not render full page if reg form is in lightbox ([1549fde](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/1549fde))
+
+
+
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.3.1...1.4.0) (2018-07-31)
+
+
+### Bug Fixes
+
+* **registration:** allow passing custom parameters to registration form ([091d647](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/091d647))
+* **shell:** do not render full page if reg form is in lightbox ([1549fde](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/1549fde))
+
+
+
 <a name="1.3.1"></a>
 ## [1.3.1](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.3.0...1.3.1) (2018-07-27)
 
