@@ -34,6 +34,11 @@ $content = elgg_view_form('register', [
 
 $content .= elgg_view('help/register');
 
+if (elgg_is_xhr()) {
+	echo $content;
+	return;
+}
+
 if (elgg_is_active_plugin('hypeTheme')) {
 	$shell = 'walled_garden';
 } else {
