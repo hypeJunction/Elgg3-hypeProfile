@@ -87,8 +87,9 @@ class SetUserFields {
 		$email_account_validator = elgg_generate_action_url('validation/is_available_email');
 		$email_account_validator = elgg_http_get_signed_url($email_account_validator);
 
+		$email_value = get_input('e');
 		$fields->add('email', new MetaField([
-			'type' => 'email',
+			'type' => $email_value ? 'hidden' : 'email',
 			'priority' => 101,
 			'required' => true,
 			'is_profile_field' => false,
@@ -98,7 +99,7 @@ class SetUserFields {
 			'data-parsley-emailaccount' => $email_account_validator,
 			'data-parsley-trigger' => 'input change',
 			'data-parsley-debounce' => 1000,
-			'value' => get_input('e'),
+			'value' => $email_value,
 		]));
 
 		if (elgg_get_plugin_setting('autogen_username', 'hypeProfile', false)) {
