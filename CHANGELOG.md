@@ -1,3 +1,13 @@
+<a name="1.4.2"></a>
+## [1.4.2](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.1...1.4.2) (2018-08-09)
+
+
+### Bug Fixes
+
+* **ux:** hide email field if email is present in request ([efbadf0](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/efbadf0))
+
+
+
 <a name="1.4.1"></a>
 ## [1.4.1](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.3.1...1.4.1) (2018-07-31)
 
