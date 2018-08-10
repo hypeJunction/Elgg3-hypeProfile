@@ -1,3 +1,13 @@
+<a name="1.4.6"></a>
+## [1.4.6](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.5...1.4.6) (2018-08-10)
+
+
+### Bug Fixes
+
+* **composer:** do not use asset plugin" ([91e6e1a](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/91e6e1a))
+
+
+
 <a name="1.4.5"></a>
 ## [1.4.5](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.4...1.4.5) (2018-08-10)
 
