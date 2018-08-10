@@ -1,21 +1,52 @@
 <?php
 
-$entity = new ElggUser();
+$field_obj = elgg_extract('field', $vars);
+/* @var $field_obj \hypeJunction\Lists\SearchFieldInterface */
 
-$svc = elgg()->{'posts.model'};
-/* @var $svc \hypeJunction\Post\Model */
+$entity_types = (array) $field_obj->getCollection()->getType();
+$entity_subtypes = (array) $field_obj->getCollection()->getSubtypes();
 
-$fields = $svc->getFields($entity);
+$search_fields = new \hypeJunction\Fields\Collection();
 
-$fields = $fields->filter(function(\hypeJunction\Fields\FieldInterface $field) {
-	return (bool) $field->is_search_field;
-});
+foreach ($entity_types as $type) {
+	foreach ($entity_subtypes as $subtype) {
+		$class = elgg_get_entity_class($type, $subtype);
+		if (!$class) {
+			continue;
+		}
 
-foreach ($fields as $field) {
+		$entity = new $class();
+
+		$svc = elgg()->{'posts.model'};
+		/* @var $svc \hypeJunction\Post\Model */
+
+		$fields = $svc->getFields($entity);
+
+		$fields = $fields->filter(function (\hypeJunction\Fields\FieldInterface $field) {
+			return (bool) $field->is_search_field;
+		});
+
+		foreach ($fields as $field) {
+			$search_field = clone $field;
+			$search_field->{'#label'} = $field->label($entity);
+			unset($search_field->{'#help'});
+			$name = $field->name;
+			unset($search_field->name);
+
+			$search_fields->add("profile[$field->name]", $field);
+		}
+	}
+}
+
+foreach ($search_fields as $field) {
 	/* @var $field \hypeJunction\Fields\FieldInterface */
 
-	$field->{'#label'} = $field->label($entity);
-	$field->name = "profile[$field->name]";
+	$field->entity_types = $entity_types;
+	$field->entity_subtypes = $entity_subtypes;
+
+	if ($field->search_type) {
+		$field->type = $field->search_type;
+	}
 
 	echo $field->render($entity);
 }

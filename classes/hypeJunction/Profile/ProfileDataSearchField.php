@@ -2,6 +2,7 @@
 
 namespace hypeJunction\Profile;
 
+use hypeJunction\Fields\Field;
 use hypeJunction\Lists\SearchFields\SearchField;
 
 class ProfileDataSearchField extends SearchField {
@@ -24,6 +25,8 @@ class ProfileDataSearchField extends SearchField {
 
 		return [
 			'#type' => 'search/profile_data',
+			'#class' => 'search-profile-data-field',
+			'field' => $this,
 			'name' => $name,
 			'value' => $value,
 		];
