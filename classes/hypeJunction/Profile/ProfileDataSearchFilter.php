@@ -36,7 +36,22 @@ class ProfileDataSearchFilter implements FilterInterface {
 			foreach ($profile as $key => $value) {
 				if ($key && $value) {
 					$alias = $qb->joinMetadataTable('e', 'guid', $key);
-					$ands[] = $qb->compare("$alias.value", 'LIKE', "%$value%", ELGG_VALUE_STRING);
+					$ors = [];
+					if (is_array($value)) {
+						foreach ($value as $val) {
+							if (empty($val)) {
+								continue;
+							}
+							$ors[] = $qb->compare("$alias.value", 'LIKE', "%$val%", ELGG_VALUE_STRING);
+						}
+					} else {
+						foreach ($value as $val) {
+							$ands[] = $qb->compare("$alias.value", 'LIKE', "%$value%", ELGG_VALUE_STRING);
+						}
+					}
+					
+					$ands[] = $qb->compare("$alias.value", '!=', '', ELGG_VALUE_STRING);
+					$ands[] = $qb->merge($ors, 'OR');
 				}
 			}
 
