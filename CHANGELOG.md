@@ -1,3 +1,13 @@
+<a name="1.4.4"></a>
+## [1.4.4](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.3...1.4.4) (2018-08-10)
+
+
+### Bug Fixes
+
+* **search:** correctly render profile data ([5fab6d1](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/5fab6d1))
+
+
+
 <a name="1.4.3"></a>
 ## [1.4.3](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.2...1.4.3) (2018-08-10)
 
