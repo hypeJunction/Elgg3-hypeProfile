@@ -1,3 +1,13 @@
+<a name="1.4.3"></a>
+## [1.4.3](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.2...1.4.3) (2018-08-10)
+
+
+### Bug Fixes
+
+* **search:** make search fields use correct entity types ([953ab4f](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/953ab4f))
+
+
+
 <a name="1.4.2"></a>
 ## [1.4.2](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.1...1.4.2) (2018-08-09)
 
