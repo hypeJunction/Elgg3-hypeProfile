@@ -2,7 +2,6 @@
 
 namespace hypeJunction\Profile;
 
-use hypeJunction\Fields\Field;
 use hypeJunction\Lists\SearchFields\SearchField;
 
 class ProfileDataSearchField extends SearchField {
@@ -23,12 +22,14 @@ class ProfileDataSearchField extends SearchField {
 		$name = $this->getName();
 		$value = $this->getValue() ? : [];
 
-		return [
-			'#type' => 'search/profile_data',
-			'#class' => 'search-profile-data-field',
+		$view = elgg_view('input/search/profile_data', [
 			'field' => $this,
 			'name' => $name,
 			'value' => $value,
+		]);
+
+		return [
+			'#html' => $view,
 		];
 	}
 
