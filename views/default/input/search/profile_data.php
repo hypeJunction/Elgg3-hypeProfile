@@ -27,13 +27,7 @@ foreach ($entity_types as $type) {
 		});
 
 		foreach ($fields as $field) {
-			$search_field = clone $field;
-			$search_field->{'#label'} = $field->label($entity);
-			unset($search_field->{'#help'});
-			$name = $field->name;
-			unset($search_field->name);
-
-			$search_fields->add("profile[$field->name]", $field);
+			$search_fields->add($field->name, $field);
 		}
 	}
 }
@@ -47,6 +41,8 @@ foreach ($search_fields as $field) {
 	if ($field->search_type) {
 		$field->type = $field->search_type;
 	}
+
+	$field->input_name = "profile[$field->name]";
 
 	echo $field->render($entity);
 }
