@@ -1,3 +1,13 @@
+<a name="1.4.5"></a>
+## [1.4.5](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.4...1.4.5) (2018-08-10)
+
+
+### Bug Fixes
+
+* **search:** remove debug ([bf2f50c](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/bf2f50c))
+
+
+
 <a name="1.4.4"></a>
 ## [1.4.4](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.3...1.4.4) (2018-08-10)
 
