@@ -1,3 +1,13 @@
+<a name="1.4.8"></a>
+## [1.4.8](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.7...1.4.8) (2018-08-11)
+
+
+### Bug Fixes
+
+* **search:** improve array value search ([6c158a9](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/6c158a9))
+
+
+
 <a name="1.4.7"></a>
 ## [1.4.7](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.6...1.4.7) (2018-08-10)
 
