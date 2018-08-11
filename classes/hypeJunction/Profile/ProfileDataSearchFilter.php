@@ -34,25 +34,26 @@ class ProfileDataSearchFilter implements FilterInterface {
 			$ands = [];
 
 			foreach ($profile as $key => $value) {
-				if ($key && $value) {
-					$alias = $qb->joinMetadataTable('e', 'guid', $key);
-					$ors = [];
-					if (is_array($value)) {
-						foreach ($value as $val) {
-							if (empty($val)) {
-								continue;
-							}
-							$ors[] = $qb->compare("$alias.value", 'LIKE', "%$val%", ELGG_VALUE_STRING);
-						}
-					} else {
-						foreach ($value as $val) {
-							$ands[] = $qb->compare("$alias.value", 'LIKE', "%$value%", ELGG_VALUE_STRING);
-						}
-					}
-					
-					$ands[] = $qb->compare("$alias.value", '!=', '', ELGG_VALUE_STRING);
-					$ands[] = $qb->merge($ors, 'OR');
+				if (empty($val) || !is_string($key) || empty($key)) {
+					continue;
 				}
+
+				$alias = $qb->joinMetadataTable('e', 'guid', $key, 'left');
+				if (is_array($value)) {
+					$ors = [];
+					foreach ($value as $val) {
+						$ors[] = $qb->compare("$alias.value", 'LIKE', "%$val%", ELGG_VALUE_STRING);
+					}
+
+					$ands[] = $qb->merge($ors, 'OR');
+				} else {
+					foreach ($value as $val) {
+						$ands[] = $qb->compare("$alias.value", 'LIKE', "%$value%", ELGG_VALUE_STRING);
+					}
+				}
+
+				$ands[] = $qb->compare("$alias.value", 'IS NOT NULL', '', ELGG_VALUE_STRING);
+				$ands[] = $qb->compare("$alias.value", '!=', '', ELGG_VALUE_STRING);
 			}
 
 			return $qb->merge($ands);
