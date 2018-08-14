@@ -1,3 +1,13 @@
+<a name="1.4.9"></a>
+## [1.4.9](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.8...1.4.9) (2018-08-14)
+
+
+### Bug Fixes
+
+* **search:** correctly populate field values ([f90f08c](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/f90f08c))
+
+
+
 <a name="1.4.8"></a>
 ## [1.4.8](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.7...1.4.8) (2018-08-11)
 
