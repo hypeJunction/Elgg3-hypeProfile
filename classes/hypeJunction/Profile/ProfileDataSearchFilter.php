@@ -34,7 +34,7 @@ class ProfileDataSearchFilter implements FilterInterface {
 			$ands = [];
 
 			foreach ($profile as $key => $value) {
-				if (empty($val) || !is_string($key) || empty($key)) {
+				if (empty($value) || !is_string($key) || empty($key)) {
 					continue;
 				}
 
@@ -42,14 +42,16 @@ class ProfileDataSearchFilter implements FilterInterface {
 				if (is_array($value)) {
 					$ors = [];
 					foreach ($value as $val) {
+						if (empty($val)) {
+							continue;
+						}
+						
 						$ors[] = $qb->compare("$alias.value", 'LIKE', "%$val%", ELGG_VALUE_STRING);
 					}
 
 					$ands[] = $qb->merge($ors, 'OR');
 				} else {
-					foreach ($value as $val) {
-						$ands[] = $qb->compare("$alias.value", 'LIKE', "%$value%", ELGG_VALUE_STRING);
-					}
+					$ands[] = $qb->compare("$alias.value", 'LIKE', "%$value%", ELGG_VALUE_STRING);
 				}
 
 				$ands[] = $qb->compare("$alias.value", 'IS NOT NULL', '', ELGG_VALUE_STRING);

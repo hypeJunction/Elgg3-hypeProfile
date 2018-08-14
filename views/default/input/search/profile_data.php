@@ -1,5 +1,7 @@
 <?php
 
+$value = elgg_extract('value', $vars, []);
+
 $field_obj = elgg_extract('field', $vars);
 /* @var $field_obj \hypeJunction\Lists\SearchFieldInterface */
 
@@ -43,6 +45,7 @@ foreach ($search_fields as $field) {
 	}
 
 	$field->input_name = "profile[$field->name]";
+	$field->value = elgg_extract($field->name, $value);
 
 	echo $field->render($entity);
 }
