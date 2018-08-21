@@ -1,3 +1,13 @@
+<a name="1.4.10"></a>
+## [1.4.10](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.9...1.4.10) (2018-08-21)
+
+
+### Bug Fixes
+
+* **ux:** use parsley for field validation ([90644f0](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/90644f0))
+
+
+
 <a name="1.4.9"></a>
 ## [1.4.9](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.8...1.4.9) (2018-08-14)
 
