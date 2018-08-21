@@ -1,3 +1,13 @@
+<a name="1.4.11"></a>
+## [1.4.11](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.10...1.4.11) (2018-08-21)
+
+
+### Bug Fixes
+
+* **forms:** correctly validate registration form ([7470fcd](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/7470fcd))
+
+
+
 <a name="1.4.10"></a>
 ## [1.4.10](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.9...1.4.10) (2018-08-21)
 
