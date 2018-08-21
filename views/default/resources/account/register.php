@@ -30,6 +30,7 @@ $form_vars = array_merge($form_vars, $sticky);
 
 $content = elgg_view_form('register', [
 	'class' => 'elgg-form-account post-form',
+	'novalidate' => true,
 ], $form_vars);
 
 $content .= elgg_view('help/register');
