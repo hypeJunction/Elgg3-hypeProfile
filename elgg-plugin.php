@@ -65,7 +65,7 @@ return [
 		],
 		'collection:user:user' => [
 			'path' => '/members',
-			'resource' => 'collection/all',
+			'resource' => 'members/all',
 		],
 	],
 	'settings' => [

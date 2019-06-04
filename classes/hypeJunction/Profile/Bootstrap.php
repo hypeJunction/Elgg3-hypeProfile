@@ -68,6 +68,8 @@ class Bootstrap extends PluginBootstrap {
 		}
 
 		elgg_register_collection("collection:user:user", DefaultMemberCollection::class);
+
+		elgg_register_plugin_hook_handler('register', 'menu:filter:members', FilterMembersTabs::class, 800);
 	}
 
 	/**
