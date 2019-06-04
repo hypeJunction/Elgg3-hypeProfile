@@ -1,3 +1,13 @@
+<a name="1.4.12"></a>
+## [1.4.12](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.11...1.4.12) (2019-06-04)
+
+
+### Bug Fixes
+
+* **tabs:** preserve non-members tabs ([997caff](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/commit/997caff))
+
+
+
 <a name="1.4.11"></a>
 ## [1.4.11](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.10...1.4.11) (2018-08-21)
 
