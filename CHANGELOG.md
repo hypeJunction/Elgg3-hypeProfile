@@ -1,3 +1,8 @@
+<a name="1.4.14"></a>
+## [1.4.14](https://github.com/hypeJunction/Elgg3-hypeProfile/compare/1.4.13...1.4.14) (2019-06-04)
+
+
+
 <a name="1.4.13"></a>
 ## [1.4.13](https://github.com/hypeJunction/Elgg3-hypeProfile/compare/1.4.12...1.4.13) (2019-06-04)
 

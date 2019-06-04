@@ -1,25 +1,28 @@
 {
-	"name": "hypejunction/hypeprofile",
-	"version": "1.4.13",
-	"type": "elgg-plugin",
-	"description": "Extended profile functionalities for Elgg",
-	"homepage": "http://hypejunction.com",
-	"keywords": [
-		"elgg", "plugin", "users", "profile"
-	],
-	"license": "proprietary",
-	"authors": [
-		{
-			"name": "Ismayil Khayredinov",
-			"email": "info@hypejunction.com"
-		}
-	],
+    "name": "hypejunction/hypeprofile",
+    "version": "1.4.14",
+    "type": "elgg-plugin",
+    "description": "Extended profile functionalities for Elgg",
+    "homepage": "http://hypejunction.com",
+    "keywords": [
+        "elgg",
+        "plugin",
+        "users",
+        "profile"
+    ],
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ismayil Khayredinov",
+            "email": "info@hypejunction.com"
+        }
+    ],
     "extra": {
         "installer-name": "hypeProfile"
     },
-	"require": {
-		"php": ">=7.0",
-		"composer/installers": "~1.0",
+    "require": {
+        "php": ">=7.0",
+        "composer/installers": "~1.0",
         "bower-asset/zxcvbn": "~4.4",
         "bjeavons/zxcvbn-php": "~0.3"
     },
@@ -35,9 +38,6 @@
         {
             "type": "composer",
             "url": "https://asset-packagist.org"
-        },
-        {
-            "packagist.org": false
         }
     ]
 }
