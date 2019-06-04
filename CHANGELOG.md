@@ -1,3 +1,13 @@
+<a name="1.4.13"></a>
+## [1.4.13](https://github.com/hypeJunction/Elgg3-hypeProfile/compare/1.4.12...1.4.13) (2019-06-04)
+
+
+### Bug Fixes
+
+* **releases:** correct release urls ([83d17f4](https://github.com/hypeJunction/Elgg3-hypeProfile/commit/83d17f4))
+
+
+
 <a name="1.4.12"></a>
 ## [1.4.12](https://github.com/hypeJunctionPro/Elgg3-hypeProfile/compare/1.4.11...1.4.12) (2019-06-04)
 
