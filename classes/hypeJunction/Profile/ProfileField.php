@@ -2,6 +2,7 @@
 
 namespace hypeJunction\Profile;
 
+use Elgg\Request;
 use ElggEntity;
 use hypeJunction\Fields\Field;
 use Symfony\Component\HttpFoundation\ParameterBag;
@@ -12,6 +13,19 @@ class ProfileField extends Field {
 	const GLOBAL_PICKER = 'global_picker';
 	const FORCE_PUBLIC = 'public';
 	const FORCE_LOGGED_IN = 'logged_in';
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function raw(Request $request, ElggEntity $entity) {
+		$value = $request->getParam($this->name);
+
+		if ($this->type === 'tags' && is_string($value)) {
+			$value = string_to_tag_array($value);
+		}
+
+		return $value;
+	}
 
 	/**
 	 * {@inheritdoc}
