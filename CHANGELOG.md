@@ -1,3 +1,13 @@
+<a name="1.4.15"></a>
+## [1.4.15](https://github.com/hypeJunction/Elgg3-hypeProfile/compare/1.4.14...1.4.15) (2019-06-21)
+
+
+### Bug Fixes
+
+* **tags:** properly process tags input ([49a70f3](https://github.com/hypeJunction/Elgg3-hypeProfile/commit/49a70f3))
+
+
+
 <a name="1.4.14"></a>
 ## [1.4.14](https://github.com/hypeJunction/Elgg3-hypeProfile/compare/1.4.13...1.4.14) (2019-06-04)
 
