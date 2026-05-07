@@ -2,6 +2,7 @@
 
 namespace hypeJunction\Profile;
 
+use Elgg\Exceptions\Http\GatekeeperException;
 use Elgg\Http\ResponseBuilder;
 use Elgg\Request;
 
@@ -13,22 +14,22 @@ class RegistrationGatekeeper {
 	 * @param Request $request Request
 	 *
 	 * @return ResponseBuilder
-	 * @throws \Elgg\GatekeeperException
+	 * @throws GatekeeperException
 	 */
 	public function __invoke(Request $request) {
 
 		if (elgg_is_logged_in()) {
 			$user = elgg_get_logged_in_user_entity();
-			$exception = new \Elgg\GatekeeperException();
+			$exception = new GatekeeperException();
 			$exception->setRedirectUrl($user->getURL());
-			throw new $exception;
+			throw $exception;
 		}
 
 		if (elgg_get_config('allow_registration') == false) {
-			throw new \Elgg\GatekeeperException(elgg_echo('registerdisabled'));
+			throw new GatekeeperException(elgg_echo('registerdisabled'));
 		}
 
-		if (elgg_get_plugin_setting('email_validation', 'hypeProfile')) {
+		if (elgg_get_plugin_setting('email_validation', 'hypeprofile')) {
 			if (!elgg_http_validate_signed_url($request->getURL())) {
 				$params = $request->getParams();
 				unset($params['_route']);

@@ -44,7 +44,7 @@ class ProfileField extends Field {
 		$annotations = $this->getAnnotation($entity);
 
 		if ($context == self::CONTEXT_EDIT_FORM) {
-			$field_access_conf = elgg_get_plugin_setting('field_access', 'hypeProfile');
+			$field_access_conf = elgg_get_plugin_setting('field_access', 'hypeprofile');
 
 			if ($field_access_conf == self::FIELD_PICKER) {
 				$class = elgg_extract_class($main, '', '#class');
@@ -127,7 +127,7 @@ class ProfileField extends Field {
 			'limit' => false
 		]);
 
-		$field_access_conf = elgg_get_plugin_setting('field_access', 'hypeProfile');
+		$field_access_conf = elgg_get_plugin_setting('field_access', 'hypeprofile');
 
 		if (!is_null($value) && ($value !== '')) {
 			$access_id = ACCESS_PRIVATE;

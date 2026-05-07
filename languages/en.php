@@ -64,8 +64,8 @@ return [
 		 - {{site_url}} - corresponds to the site URL<br />
 	',
 
-	'forms:register:header' => elgg_get_plugin_setting('header', 'hypeProfile', ''),
-	'forms:register:footer' => elgg_get_plugin_setting('footer', 'hypeProfile', ''),
+	'forms:register:header' => elgg_get_plugin_setting('header', 'hypeprofile', ''),
+	'forms:register:footer' => elgg_get_plugin_setting('footer', 'hypeprofile', ''),
 
 	'field:user:first_name' => 'First Name',
 	'field:user:last_name' => 'Last Name',

@@ -26,7 +26,7 @@ class SendWelcomeEmail {
 		$text = elgg_echo('register:welcome_email', [], $user->language);
 
 		if (!$text) {
-			$text = elgg_get_plugin_setting('welcome_email', 'hypeProfile');
+			$text = elgg_get_plugin_setting('welcome_email', 'hypeprofile');
 		}
 
 		if (!$text) {
