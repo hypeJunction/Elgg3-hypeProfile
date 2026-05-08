@@ -4,7 +4,7 @@ namespace hypeJunction\Profile;
 
 use Elgg\Email;
 use Elgg\Http\ResponseBuilder;
-use Elgg\HttpException;
+use Elgg\Exceptions\HttpException;
 use Elgg\Request;
 
 class PreRegisterAction {
