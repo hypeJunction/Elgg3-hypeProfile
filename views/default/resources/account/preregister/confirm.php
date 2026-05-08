@@ -5,7 +5,7 @@ $request = elgg_extract('request', $vars);
 
 $address = $request->getParam('email');
 if (!$address) {
-	throw new \Elgg\BadRequestException();
+	throw new \Elgg\Exceptions\Http\BadRequestException();
 }
 
 $content = elgg_view('output/longtext', [

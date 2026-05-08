@@ -7,11 +7,11 @@ $username = elgg_extract('username', $vars);
 $entity = get_user_by_username($username);
 
 if (!$entity instanceof \ElggEntity) {
-	throw new \Elgg\BadRequestException();
+	throw new \Elgg\Exceptions\Http\BadRequestException();
 }
 
 if (!$entity->canEdit()) {
-	throw new \Elgg\EntityPermissionsException();
+	throw new \Elgg\Exceptions\Http\EntityPermissionsException();
 }
 
 elgg_push_entity_breadcrumbs($entity);

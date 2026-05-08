@@ -2,9 +2,9 @@
 
 namespace hypeJunction\Profile;
 
-use Elgg\BadRequestException;
 use Elgg\Event;
-use Elgg\HttpException;
+use Elgg\Exceptions\Http\BadRequestException;
+use Elgg\Exceptions\HttpException;
 use Elgg\Request;
 use Exception;
 use hypeJunction\Fields\Field;
@@ -243,7 +243,7 @@ class RegistrationMiddleware {
 			}
 
 			if ($fill > 0) {
-				$suffix = (new \ElggCrypto())->getRandomString($fill);
+				$suffix = substr(bin2hex(random_bytes((int) ceil($fill / 2))), 0, $fill);
 				$username = "$username$separator$suffix";
 			}
 
@@ -260,12 +260,12 @@ class RegistrationMiddleware {
 
 				try {
 					if ($available) {
-						validate_username($username);
+						elgg()->accounts->assertValidUsername($username);
 					}
 				} catch (Exception $e) {
 					if ($iterator >= 100) {
 						// too many failed attempts
-						$username = (new \ElggCrypto())->getRandomString(8);
+						$username = bin2hex(random_bytes(4));
 					}
 				}
 				$iterator++;
