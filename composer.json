@@ -3,7 +3,7 @@
     "version": "1.4.15",
     "type": "elgg-plugin",
     "description": "Extended profile functionalities for Elgg",
-    "homepage": "http://hypejunction.com",
+    "homepage": "https://github.com/hypeJunction/hypeprofile",
     "keywords": [
         "elgg",
         "plugin",
@@ -13,16 +13,16 @@
     "license": "proprietary",
     "authors": [
         {
-            "name": "Ismayil Khayredinov",
-            "email": "info@hypejunction.com"
+            "name": "hypeJunction"
         }
     ],
     "extra": {
         "installer-name": "hypeProfile"
     },
     "require": {
-        "php": ">=7.0",
-        "composer/installers": "~1.0",
+        "php": ">=7.4",
+        "composer/installers": "^2.0",
+        "elgg/elgg": "^4.0",
         "bower-asset/zxcvbn": "~4.4",
         "bjeavons/zxcvbn-php": "~0.3"
     },

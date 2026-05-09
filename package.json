@@ -1,12 +1,12 @@
 {
 	"name": "hypeProfile",
 	"version": "1.4.15",
-	"license": "SEE LICENSE IN https://hypejunction.com/license",
+	"license": "proprietary",
     "repository": {
         "type": "git",
-        "url": "git@github.com:hypeJunction/Elgg3-hypeProfile.git",
+        "url": "git@github.com:hypeJunction/hypeprofile.git",
         "owner": "hypeJunction",
-        "repo": "Elgg3-hypeProfile"
+        "repo": "hypeprofile"
     },
     "dependencies": {
         "curlrequest": "^1.0.1",
