@@ -3,7 +3,7 @@
 namespace hypeJunction\Profile;
 
 use Elgg\Collections\Collection;
-use Elgg\HooksRegistrationService\Hook;
+use Elgg\Event;
 use Elgg\IntegrationTestCase;
 
 class FilterMembersTabsTest extends IntegrationTestCase {
@@ -28,12 +28,12 @@ class FilterMembersTabsTest extends IntegrationTestCase {
 			]));
 		}
 
-		$hook = $this->getMockBuilder(Hook::class)
+		$event = $this->getMockBuilder(Event::class)
 			->disableOriginalConstructor()
 			->getMock();
-		$hook->method('getValue')->willReturn($tabs);
+		$event->method('getValue')->willReturn($tabs);
 
-		$result = (new FilterMembersTabs())($hook);
+		$result = (new FilterMembersTabs())($event);
 
 		$this->assertInstanceOf(Collection::class, $result);
 
@@ -53,12 +53,12 @@ class FilterMembersTabsTest extends IntegrationTestCase {
 	public function testAllTabHrefMatchesGeneratedRoute(): void {
 		$tabs = new Collection();
 
-		$hook = $this->getMockBuilder(Hook::class)
+		$event = $this->getMockBuilder(Event::class)
 			->disableOriginalConstructor()
 			->getMock();
-		$hook->method('getValue')->willReturn($tabs);
+		$event->method('getValue')->willReturn($tabs);
 
-		$result = (new FilterMembersTabs())($hook);
+		$result = (new FilterMembersTabs())($event);
 
 		$all = null;
 		foreach ($result as $item) {

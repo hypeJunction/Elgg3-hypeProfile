@@ -26,7 +26,7 @@ class Bootstrap extends PluginBootstrap {
 	 * @return void
 	 */
 	public function boot() {
-		$this->elgg()->hooks->registerHandler('route:config', 'action:register', ConfigureRegistratinRoute::class);
+		$this->elgg()->events->registerHandler('route:config', 'action:register', ConfigureRegistratinRoute::class);
 	}
 
 	/**
@@ -37,18 +37,18 @@ class Bootstrap extends PluginBootstrap {
 	 * @return void
 	 */
 	public function init() {
-		$this->elgg()->hooks->registerHandler('fields', 'user', \hypeJunction\Profile\SetUserFields::class);
+		$this->elgg()->events->registerHandler('fields', 'user', \hypeJunction\Profile\SetUserFields::class);
 
-		$this->elgg()->hooks->registerHandler('uses:icon', 'user:user', [\Elgg\Values::class, 'getTrue']);
-		$this->elgg()->hooks->registerHandler('uses:cover', 'user:user', [\Elgg\Values::class, 'getTrue']);
-		$this->elgg()->hooks->registerHandler('uses:comments', 'user:user', [\Elgg\Values::class, 'getFalse']);
-		$this->elgg()->hooks->registerHandler('uses:river', 'user:user', [\Elgg\Values::class, 'getFalse']);
-		$this->elgg()->hooks->registerHandler('uses:autosave', 'user:user', [\Elgg\Values::class, 'getFalse']);
-		$this->elgg()->hooks->registerHandler('uses:location', 'user:user', [\Elgg\Values::class, 'getTrue']);
+		$this->elgg()->events->registerHandler('uses:icon', 'user:user', [\Elgg\Values::class, 'getTrue']);
+		$this->elgg()->events->registerHandler('uses:cover', 'user:user', [\Elgg\Values::class, 'getTrue']);
+		$this->elgg()->events->registerHandler('uses:comments', 'user:user', [\Elgg\Values::class, 'getFalse']);
+		$this->elgg()->events->registerHandler('uses:river', 'user:user', [\Elgg\Values::class, 'getFalse']);
+		$this->elgg()->events->registerHandler('uses:autosave', 'user:user', [\Elgg\Values::class, 'getFalse']);
+		$this->elgg()->events->registerHandler('uses:location', 'user:user', [\Elgg\Values::class, 'getTrue']);
 
 		$this->elgg()->events->registerHandler('validate', 'user', SendWelcomeEmail::class);
 
-		$this->elgg()->hooks->registerHandler('params', 'invite', AddValidationTokenTInviteUrl::class);
+		$this->elgg()->events->registerHandler('params', 'invite', AddValidationTokenTInviteUrl::class);
 
 		elgg_extend_view('input/text', 'forms/validation/username');
 		elgg_extend_view('input/email', 'forms/validation/email');
@@ -58,7 +58,7 @@ class Bootstrap extends PluginBootstrap {
 		elgg_extend_view('elgg.css', 'profile/extras.css');
 
 		if (elgg_is_active_plugin('members')) {
-			elgg_unregister_plugin_hook_handler('register', 'menu:filter:members', 'members_register_filter_menu');
+			elgg_unregister_event_handler('register', 'menu:filter:members', 'members_register_filter_menu');
 
 			elgg_unregister_route('collection:user:user:alpha');
 			elgg_unregister_route('collection:user:user:newest');
@@ -69,7 +69,7 @@ class Bootstrap extends PluginBootstrap {
 
 		elgg_register_collection("collection:user:user", DefaultMemberCollection::class);
 
-		elgg_register_plugin_hook_handler('register', 'menu:filter:members', FilterMembersTabs::class, 800);
+		elgg_register_event_handler('register', 'menu:filter:members', FilterMembersTabs::class, 800);
 	}
 
 	/**

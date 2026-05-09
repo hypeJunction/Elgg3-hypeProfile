@@ -70,7 +70,7 @@ class RegisterAction {
 				$params = $request->getParams();
 				$params['user'] = $new_user;
 
-				if (!elgg_trigger_plugin_hook('register', 'user', $params, true)) {
+				if (!elgg_trigger_event_results('register', 'user', $params, true)) {
 					throw new RegistrationException(elgg_echo('registerbad'));
 				}
 			} catch (\Exception $e) {

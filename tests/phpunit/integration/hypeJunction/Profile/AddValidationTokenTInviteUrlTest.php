@@ -2,7 +2,7 @@
 
 namespace hypeJunction\Profile;
 
-use Elgg\Hook;
+use Elgg\Event;
 use Elgg\IntegrationTestCase;
 
 class AddValidationTokenTInviteUrlTest extends IntegrationTestCase {
@@ -18,13 +18,13 @@ class AddValidationTokenTInviteUrlTest extends IntegrationTestCase {
 	}
 
 	public function testHandlerAppendsTenCharacterEvToken(): void {
-		$hook = $this->getMockBuilder(Hook::class)->getMock();
-		$hook->method('getParam')->willReturnCallback(function ($key) {
+		$event = $this->getMockBuilder(Event::class)->disableOriginalConstructor()->getMock();
+		$event->method('getParam')->willReturnCallback(function ($key) {
 			return $key === 'email' ? 'invitee@example.com' : null;
 		});
-		$hook->method('getValue')->willReturn(['existing' => 'param']);
+		$event->method('getValue')->willReturn(['existing' => 'param']);
 
-		$result = (new AddValidationTokenTInviteUrl())($hook);
+		$result = (new AddValidationTokenTInviteUrl())($event);
 
 		$this->assertIsArray($result);
 		$this->assertArrayHasKey('ev', $result);
@@ -34,10 +34,10 @@ class AddValidationTokenTInviteUrlTest extends IntegrationTestCase {
 
 	public function testTokenIsDeterministicPerEmail(): void {
 		$buildResult = function (string $email): string {
-			$hook = $this->getMockBuilder(Hook::class)->getMock();
-			$hook->method('getParam')->willReturnCallback(fn($k) => $k === 'email' ? $email : null);
-			$hook->method('getValue')->willReturn([]);
-			$out = (new AddValidationTokenTInviteUrl())($hook);
+			$event = $this->getMockBuilder(Event::class)->disableOriginalConstructor()->getMock();
+			$event->method('getParam')->willReturnCallback(fn($k) => $k === 'email' ? $email : null);
+			$event->method('getValue')->willReturn([]);
+			$out = (new AddValidationTokenTInviteUrl())($event);
 			return $out['ev'];
 		};
 

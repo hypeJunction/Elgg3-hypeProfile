@@ -3,14 +3,14 @@
 namespace hypeJunction\Profile;
 
 use Elgg\Collections\Collection;
-use Elgg\HooksRegistrationService\Hook;
+use Elgg\Event;
 
 class FilterMembersTabs {
 
-	public function __invoke(Hook $hook) {
+	public function __invoke(Event $event) {
 		$remove = ['alpha', 'newest', 'popular', 'online'];
 
-		$tabs = $hook->getValue();
+		$tabs = $event->getValue();
 		/* @var $tabs Collection */
 
 		foreach ($remove as $name) {

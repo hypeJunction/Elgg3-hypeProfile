@@ -2,26 +2,26 @@
 
 namespace hypeJunction\Profile;
 
-use Elgg\Hook;
+use Elgg\Event;
 
 class AddValidationTokenTInviteUrl {
 
 	/**
 	 * Add email validation token to outgoing invite emails
 	 *
-	 * @param Hook $hook Hook
+	 * @param Event $event Event
 	 *
 	 * @return mixed
 	 */
-	public function __invoke(Hook $hook) {
+	public function __invoke(Event $event) {
 
-		$email = $hook->getParam('email');
+		$email = $event->getParam('email');
 
 		// Email validation token
 		$token = elgg_build_hmac(['email' => $email])->getToken();
 		$token = substr($token, 0, 10);
 
-		$params = $hook->getValue();
+		$params = $event->getValue();
 		$params['ev'] = $token;
 
 		return $params;

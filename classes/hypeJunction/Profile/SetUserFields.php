@@ -2,7 +2,7 @@
 
 namespace hypeJunction\Profile;
 
-use Elgg\Hook;
+use Elgg\Event;
 use ElggUser;
 use hypeJunction\Fields\Collection;
 use hypeJunction\Fields\ControlElement;
@@ -17,20 +17,20 @@ class SetUserFields {
 	/**
 	 * Setup group fields
 	 *
-	 * @param Hook $hook Hook
+	 * @param Event $event Event
 	 *
 	 * @return array|null
 	 * @throws \InvalidParameterException
 	 */
-	public function __invoke(Hook $hook) {
+	public function __invoke(Event $event) {
 
-		$entity = $hook->getEntityParam();
+		$entity = $event->getEntityParam();
 
 		if (!$entity instanceof ElggUser) {
 			return null;
 		}
 
-		$fields = $hook->getValue();
+		$fields = $event->getValue();
 		/* @var $fields Collection */
 
 		if (elgg_get_plugin_setting('first_last_name', 'hypeprofile')) {
@@ -193,7 +193,7 @@ class SetUserFields {
 			'priority' => 400,
 		]));
 
-		$vars = $hook->getParams();
+		$vars = $event->getParams();
 
 		$fields->add('_extend', new CustomHtml([
 			'#html' => function () use ($vars) {
@@ -207,7 +207,7 @@ class SetUserFields {
 
 		$fields->add('friend_guid', new HiddenField([
 			'type' => 'hidden',
-			'value' => $hook->getParam('friend_guid'),
+			'value' => $event->getParam('friend_guid'),
 			'is_profile_field' => false,
 			'is_edit_field' => false,
 			'is_create_field' => true,
@@ -215,7 +215,7 @@ class SetUserFields {
 
 		$fields->add('invitecode', new HiddenField([
 			'type' => 'hidden',
-			'value' => $hook->getParam('invitecode'),
+			'value' => $event->getParam('invitecode'),
 			'is_profile_field' => false,
 			'is_edit_field' => false,
 			'is_create_field' => true,

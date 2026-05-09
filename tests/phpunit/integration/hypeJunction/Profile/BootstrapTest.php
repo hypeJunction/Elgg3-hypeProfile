@@ -23,21 +23,21 @@ class BootstrapTest extends IntegrationTestCase {
 	}
 
 	public function testRouteConfigHookHandlerIsRegistered(): void {
-		$this->assertTrue(_elgg_services()->hooks->hasHandler('route:config', 'action:register'));
+		$this->assertTrue(_elgg_services()->events->hasHandler('route:config', 'action:register'));
 	}
 
 	public function testFieldsUserHookHandlerIsRegistered(): void {
-		$this->assertTrue(_elgg_services()->hooks->hasHandler('fields', 'user'));
+		$this->assertTrue(_elgg_services()->events->hasHandler('fields', 'user'));
 	}
 
 	public function testUserCapabilityHookHandlersAreRegistered(): void {
-		$hooks = _elgg_services()->hooks;
-		$this->assertTrue($hooks->hasHandler('uses:icon', 'user:user'));
-		$this->assertTrue($hooks->hasHandler('uses:cover', 'user:user'));
-		$this->assertTrue($hooks->hasHandler('uses:comments', 'user:user'));
-		$this->assertTrue($hooks->hasHandler('uses:river', 'user:user'));
-		$this->assertTrue($hooks->hasHandler('uses:autosave', 'user:user'));
-		$this->assertTrue($hooks->hasHandler('uses:location', 'user:user'));
+		$events = _elgg_services()->events;
+		$this->assertTrue($events->hasHandler('uses:icon', 'user:user'));
+		$this->assertTrue($events->hasHandler('uses:cover', 'user:user'));
+		$this->assertTrue($events->hasHandler('uses:comments', 'user:user'));
+		$this->assertTrue($events->hasHandler('uses:river', 'user:user'));
+		$this->assertTrue($events->hasHandler('uses:autosave', 'user:user'));
+		$this->assertTrue($events->hasHandler('uses:location', 'user:user'));
 	}
 
 	public function testWelcomeEmailEventHandlerIsRegistered(): void {
@@ -45,11 +45,11 @@ class BootstrapTest extends IntegrationTestCase {
 	}
 
 	public function testInviteParamsHookHandlerIsRegistered(): void {
-		$this->assertTrue(_elgg_services()->hooks->hasHandler('params', 'invite'));
+		$this->assertTrue(_elgg_services()->events->hasHandler('params', 'invite'));
 	}
 
 	public function testMembersFilterMenuHookHandlerIsRegistered(): void {
-		$this->assertTrue(_elgg_services()->hooks->hasHandler('register', 'menu:filter:members'));
+		$this->assertTrue(_elgg_services()->events->hasHandler('register', 'menu:filter:members'));
 	}
 
 	public function testRegisterActionIsRegistered(): void {

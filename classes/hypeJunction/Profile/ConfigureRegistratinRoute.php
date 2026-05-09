@@ -3,20 +3,20 @@
 
 namespace hypeJunction\Profile;
 
-use Elgg\Hook;
+use Elgg\Event;
 
 class ConfigureRegistratinRoute {
 
 	/**
-	 * @elgg_plugin_hook route:config account:register
+	 * @elgg_event route:config account:register
 	 *
-	 * @param Hook $hook Hook
+	 * @param Event $event Event
 	 *
 	 * @return array
 	 */
-	public function __invoke(Hook $hook) {
+	public function __invoke(Event $event) {
 
-		$conf = $hook->getValue();
+		$conf = $event->getValue();
 
 		$midddleware = (array) elgg_extract('middleware', $conf, []);
 		$midddleware[] = RegistrationMiddleware::class;
