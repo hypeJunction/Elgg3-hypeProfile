@@ -1,8 +1,15 @@
+:root {
+	--profile-validation-padding: 2rem;
+	--profile-validation-margin: 1rem;
+	--profile-validation-border-width: 2px;
+	--profile-validation-border-radius: 3px;
+}
+
 .elgg-form-register .profile-validation-field {
-	padding: 2rem;
-	margin: 1rem -2rem;
-	width: calc(100% + 4rem);
-	border: 2px solid var(--elgg-state-danger-border-color);
+	padding: var(--profile-validation-padding);
+	margin: var(--profile-validation-margin) calc(-1 * var(--profile-validation-padding));
+	width: calc(100% + 2 * var(--profile-validation-padding));
+	border: var(--profile-validation-border-width) solid var(--elgg-state-danger-border-color);
 	background: var(--elgg-state-danger-background-color);
-	border-radius: 3px;
+	border-radius: var(--profile-validation-border-radius);
 }

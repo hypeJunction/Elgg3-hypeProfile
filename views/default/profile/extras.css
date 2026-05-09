@@ -1,10 +1,16 @@
+:root {
+	--profile-fields-background: #fff;
+	--profile-fields-gap: 1rem;
+	--profile-fields-padding: 1rem;
+}
+
 .elgg-profile-fields {
 	border: 1px solid var(--elgg-border-color-soft);
-	background: #fff;
+	background: var(--profile-fields-background);
 	display: grid;
-	grid-gap: 1rem;
+	grid-gap: var(--profile-fields-gap);
 	grid-template-columns:  repeat(auto-fill, 50%);
-	padding: 1rem;
+	padding: var(--profile-fields-padding);
 }
 
 .elgg-profile-fields> div {
