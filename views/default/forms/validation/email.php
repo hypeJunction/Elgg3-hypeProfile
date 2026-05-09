@@ -6,6 +6,4 @@ if (empty($vars['data-parsley-emailaccount'])) {
 	return;
 }
 ?>
-<script>
-	require(['forms/validation/email']);
-</script>
+<?php elgg_import_esm('forms/validation/email'); ?>

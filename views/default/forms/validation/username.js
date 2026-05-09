@@ -1,58 +1,53 @@
-define(function (require) {
+import $ from 'jquery';
+import Ajax from 'elgg/Ajax';
+import 'forms/validation';
 
-	var elgg = require('elgg');
-	var $ = require('jquery');
-	var Ajax = require('elgg/Ajax');
+window.Parsley.addValidator('validusername', {
+	requirementType: 'string',
+	validateString: function (value, url) {
+		var promise = $.Deferred();
 
-	require('forms/validation');
-	
-	window.Parsley.addValidator('validusername', {
-		requirementType: 'string',
-		validateString: function (value, url) {
-			var promise = $.Deferred();
+		var ajax = new Ajax(false);
+		ajax.path(url, {
+			data: {
+				username: value
+			}
+		}).done(function(data) {
+			if (data.valid) {
+				promise.resolve(true);
+			} else {
+				promise.reject(false);
+			}
+		});
 
-			var ajax = new Ajax(false);
-			ajax.path(url, {
-				data: {
-					username: value
-				}
-			}).done(function(data) {
-				if (data.valid) {
-					promise.resolve(true);
-				} else {
-					promise.reject(false);
-				}
-			});
+		return promise;
+	},
+	messages: {
+		_: 'validation:error:type:validusername'
+	}
+});
 
-			return promise;
-		},
-		messages: {
-			_: 'validation:error:type:validusername'
-		}
-	});
+window.Parsley.addValidator('availableusername', {
+	requirementType: 'string',
+	validateString: function (value, url) {
+		var promise = $.Deferred();
 
-	window.Parsley.addValidator('availableusername', {
-		requirementType: 'string',
-		validateString: function (value, url) {
-			var promise = $.Deferred();
+		var ajax = new Ajax(false);
+		ajax.path(url, {
+			data: {
+				username: value
+			}
+		}).done(function(data) {
+			if (data.available) {
+				promise.resolve(true);
+			} else {
+				promise.reject(false);
+			}
+		});
 
-			var ajax = new Ajax(false);
-			ajax.path(url, {
-				data: {
-					username: value
-				}
-			}).done(function(data) {
-				if (data.available) {
-					promise.resolve(true);
-				} else {
-					promise.reject(false);
-				}
-			});
-
-			return promise;
-		},
-		messages: {
-			_: 'validation:error:type:availableusername'
-		}
-	});
+		return promise;
+	},
+	messages: {
+		_: 'validation:error:type:availableusername'
+	}
 });

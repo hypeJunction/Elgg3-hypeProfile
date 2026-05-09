@@ -1,33 +1,28 @@
-define(function (require) {
+import $ from 'jquery';
+import Ajax from 'elgg/Ajax';
+import 'forms/validation';
 
-	var elgg = require('elgg');
-	var $ = require('jquery');
-	var Ajax = require('elgg/Ajax');
+window.Parsley.addValidator('emailaccount', {
+	requirementType: 'string',
+	validateString: function (value, url) {
+		var promise = $.Deferred();
 
-	require('forms/validation');
+		var ajax = new Ajax(false);
+		ajax.path(url, {
+			data: {
+				email: value
+			}
+		}).done(function(data) {
+			if (data.available) {
+				promise.resolve(true);
+			} else {
+				promise.reject(false);
+			}
+		});
 
-	window.Parsley.addValidator('emailaccount', {
-		requirementType: 'string',
-		validateString: function (value, url) {
-			var promise = $.Deferred();
-
-			var ajax = new Ajax(false);
-			ajax.path(url, {
-				data: {
-					email: value
-				}
-			}).done(function(data) {
-				if (data.available) {
-					promise.resolve(true);
-				} else {
-					promise.reject(false);
-				}
-			});
-
-			return promise;
-		},
-		messages: {
-			_: 'validation:error:type:emailaccount'
-		}
-	});
+		return promise;
+	},
+	messages: {
+		_: 'validation:error:type:emailaccount'
+	}
 });
