@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# Per-plugin Elgg 4.x install + activation script.
+# Per-plugin Elgg 6.x install + activation script.
 # PLUGIN_ID must be set in the container environment (passed by docker-compose
 # from <plugin>/docker/.env). Only that one plugin is activated — no fleet
 # activation, no plugin-order.txt, no cross-plugin side effects.
@@ -36,7 +36,7 @@ if [ -d /var/www/html/vendor/elgg/elgg/mod ]; then
 fi
 
 if [ ! -f /var/www/html/.elgg-installed ]; then
-    echo "Installing Elgg 4.x..."
+    echo "Installing Elgg 6.x..."
 
     mkdir -p elgg-config
     cat > elgg-config/settings.php <<'SETTINGS_TEMPLATE'
@@ -56,7 +56,7 @@ SETTINGS_TEMPLATE
 \$CONFIG->dbprefix = 'elgg_';
 \$CONFIG->dbencoding = 'utf8mb4';
 \$CONFIG->dataroot = '${ELGG_DATA_ROOT:-/var/www/data/}';
-\$CONFIG->wwwroot = '${ELGG_SITE_URL:-http://localhost:8480/}';
+\$CONFIG->wwwroot = '${ELGG_SITE_URL:-http://elgg/}';
 \$CONFIG->cacheroot = '${ELGG_DATA_ROOT:-/var/www/data/}cache/';
 \$CONFIG->assetroot = '${ELGG_DATA_ROOT:-/var/www/data/}assets/';
 SETTINGS_VALUES
@@ -71,9 +71,9 @@ SETTINGS_VALUES
             'dbhost' => '${ELGG_DB_HOST:-db}',
             'dbport' => '3306',
             'dbprefix' => 'elgg_',
-            'sitename' => 'Elgg 4.x Plugin Test',
+            'sitename' => 'Elgg 6.x Plugin Test',
             'siteemail' => '${ELGG_ADMIN_EMAIL:-admin@example.com}',
-            'wwwroot' => '${ELGG_SITE_URL:-http://localhost:8480/}',
+            'wwwroot' => '${ELGG_SITE_URL:-http://elgg/}',
             'dataroot' => '${ELGG_DATA_ROOT:-/var/www/data/}',
             'displayname' => 'Admin',
             'email' => '${ELGG_ADMIN_EMAIL:-admin@example.com}',
@@ -83,7 +83,7 @@ SETTINGS_VALUES
 
         \$installer = new \ElggInstaller();
         \$installer->batchInstall(\$params);
-        echo 'Elgg 4.x installed successfully.' . PHP_EOL;
+        echo 'Elgg 6.x installed successfully.' . PHP_EOL;
     " 2>&1 || echo "Install completed (check for errors above)."
 
     # Install plugin-local composer deps if the plugin declares a composer.json
@@ -103,7 +103,7 @@ SETTINGS_VALUES
         _elgg_services()->plugins->generateEntities();
 
         // Resolve dep plugin IDs from the plugin's own metadata.
-        // Priority: elgg-plugin.php 'plugin.dependencies' (Elgg 4.x) then manifest.xml <requires type='plugin'>.
+        // Priority: elgg-plugin.php 'plugin.dependencies' (Elgg 6.x) then manifest.xml <requires type='plugin'>.
         // IDs are lowercased to match mod/ directory names.
         // Deps not present in mod/ are skipped with a warning — this naturally excludes
         // deps that are unsafe to activate (e.g. unmigrated plugins not volume-mounted).
@@ -153,7 +153,7 @@ SETTINGS_VALUES
             exit(1);
         }
         // Move to end of load order so every declared dep is positioned before it.
-        // Elgg 4.x's position check rejects activation when a dep loads later in
+        // Elgg 6.x's position check rejects activation when a dep loads later in
         // the plugin list. ElggPlugin::setPriority does NOT accept 'after'/'before'
         // verbs — only int, '+N', '-N', 'first', 'last' — so 'last' is the only
         // option that reliably satisfies plugin.dependencies position-after constraints.
@@ -172,7 +172,7 @@ SETTINGS_VALUES
     " 2>&1 || echo "Plugin activation completed (check for errors above)."
 
     touch /var/www/html/.elgg-installed
-    echo "Elgg 4.x setup complete."
+    echo "Elgg 6.x setup complete."
 fi
 
 echo "Starting Apache..."

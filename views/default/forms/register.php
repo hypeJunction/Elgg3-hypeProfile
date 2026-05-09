@@ -29,7 +29,7 @@ if ($header) {
 $content = $view_fields($filter($fields, 'content'));
 if ($content) {
 	echo elgg_format_element('div', [
-		'class' => 'elgg-grid elgg-fields',
+		'class' => 'elgg-fields',
 	], $content);
 }
 
