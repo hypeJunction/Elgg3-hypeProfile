@@ -2,7 +2,7 @@
 	padding: 2rem;
 	margin: 1rem -2rem;
 	width: calc(100% + 4rem);
-	border: 2px solid $(state-danger-border-color);
-	background: $(state-danger-background-color);
+	border: 2px solid var(--elgg-state-danger-border-color);
+	background: var(--elgg-state-danger-background-color);
 	border-radius: 3px;
 }

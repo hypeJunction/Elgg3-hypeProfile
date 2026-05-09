@@ -20,9 +20,10 @@
         "installer-name": "hypeProfile"
     },
     "require": {
-        "php": ">=8.1",
+        "php": ">=8.3",
+        "ext-intl": "*",
         "composer/installers": "^2.0",
-        "elgg/elgg": "~6.1.0",
+        "elgg/elgg": "~7.0.0",
         "bower-asset/zxcvbn": "~4.4",
         "bjeavons/zxcvbn-php": "~0.3"
     },
