@@ -1,6 +1,5 @@
 {
     "name": "hypejunction/hypeprofile",
-    "version": "7.0.0",
     "type": "elgg-plugin",
     "description": "Extended profile functionalities for Elgg",
     "homepage": "https://github.com/hypeJunction/Elgg3-hypeProfile",
