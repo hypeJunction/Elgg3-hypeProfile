@@ -8,17 +8,29 @@ use Elgg\Request;
 
 class RegistrationGatekeeperTest extends IntegrationTestCase {
 
-	public function getPluginID(): string {
+	/**
+     * @return string
+     */
+    public function getPluginID(): string {
 		return 'hypeprofile';
 	}
 
-	public function up(): void {
+	/**
+     * @return void
+     */
+    public function up(): void {
 	}
 
-	public function down(): void {
+	/**
+     * @return void
+     */
+    public function down(): void {
 	}
 
-	public function testThrowsWhenUserAlreadyLoggedIn(): void {
+	/**
+     * @return void
+     */
+    public function testThrowsWhenUserAlreadyLoggedIn(): void {
 		$user = $this->createUser();
 		elgg_get_session()->setLoggedInUser($user);
 
@@ -35,7 +47,10 @@ class RegistrationGatekeeperTest extends IntegrationTestCase {
 		}
 	}
 
-	public function testThrowsWhenRegistrationIsDisabled(): void {
+	/**
+     * @return void
+     */
+    public function testThrowsWhenRegistrationIsDisabled(): void {
 		$previous = elgg_get_config('allow_registration');
 		elgg_set_config('allow_registration', false);
 
@@ -53,7 +68,10 @@ class RegistrationGatekeeperTest extends IntegrationTestCase {
 		}
 	}
 
-	public function testUnpacksQueryParametersBackOntoRequest(): void {
+	/**
+     * @return void
+     */
+    public function testUnpacksQueryParametersBackOntoRequest(): void {
 		$plugin = elgg_get_plugin_from_id('hypeprofile');
 		$emailValidationPrev = $plugin->getSetting('email_validation');
 		$plugin->setSetting('email_validation', 0);

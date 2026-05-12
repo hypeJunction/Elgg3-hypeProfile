@@ -8,17 +8,29 @@ use Elgg\IntegrationTestCase;
 
 class FilterMembersTabsTest extends IntegrationTestCase {
 
-	public function getPluginID(): string {
+	/**
+     * @return string
+     */
+    public function getPluginID(): string {
 		return 'hypeprofile';
 	}
 
-	public function up(): void {
+	/**
+     * @return void
+     */
+    public function up(): void {
 	}
 
-	public function down(): void {
+	/**
+     * @return void
+     */
+    public function down(): void {
 	}
 
-	public function testHandlerRemovesDefaultTabsAndAddsAll(): void {
+	/**
+     * @return void
+     */
+    public function testHandlerRemovesDefaultTabsAndAddsAll(): void {
 		$tabs = new Collection();
 		foreach (['alpha', 'newest', 'popular', 'online', 'unrelated'] as $name) {
 			$tabs->add(\ElggMenuItem::factory([
@@ -50,7 +62,10 @@ class FilterMembersTabsTest extends IntegrationTestCase {
 		$this->assertContains('all', $names);
 	}
 
-	public function testAllTabHrefMatchesGeneratedRoute(): void {
+	/**
+     * @return void
+     */
+    public function testAllTabHrefMatchesGeneratedRoute(): void {
 		$tabs = new Collection();
 
 		$hook = $this->getMockBuilder(Hook::class)

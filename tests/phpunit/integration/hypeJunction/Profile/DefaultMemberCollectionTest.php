@@ -13,17 +13,29 @@ use hypeJunction\Lists\Filters\IsOnline;
 
 class DefaultMemberCollectionTest extends IntegrationTestCase {
 
-	public function getPluginID(): string {
+	/**
+     * @return string
+     */
+    public function getPluginID(): string {
 		return 'hypeprofile';
 	}
 
-	public function up(): void {
+	/**
+     * @return void
+     */
+    public function up(): void {
 	}
 
-	public function down(): void {
+	/**
+     * @return void
+     */
+    public function down(): void {
 	}
 
-	public function testCollectionExposesUserType(): void {
+	/**
+     * @return void
+     */
+    public function testCollectionExposesUserType(): void {
 		$collection = new DefaultMemberCollection();
 		$this->assertSame('user', $collection->getType());
 		$this->assertSame('all', $collection->getCollectionType());
@@ -31,13 +43,19 @@ class DefaultMemberCollectionTest extends IntegrationTestCase {
 		$this->assertNull($collection->getSubtypes());
 	}
 
-	public function testCollectionUrlMatchesRoute(): void {
+	/**
+     * @return void
+     */
+    public function testCollectionUrlMatchesRoute(): void {
 		$collection = new DefaultMemberCollection();
 		$expected = elgg_generate_url('collection:user:user');
 		$this->assertSame($expected, $collection->getURL());
 	}
 
-	public function testCollectionExposesExpectedSorters(): void {
+	/**
+     * @return void
+     */
+    public function testCollectionExposesExpectedSorters(): void {
 		$collection = new DefaultMemberCollection();
 		$this->assertSame(
 			[Alpha::class, TimeCreated::class, FriendCount::class],
@@ -45,7 +63,10 @@ class DefaultMemberCollectionTest extends IntegrationTestCase {
 		);
 	}
 
-	public function testCollectionExposesExpectedFilters(): void {
+	/**
+     * @return void
+     */
+    public function testCollectionExposesExpectedFilters(): void {
 		$collection = new DefaultMemberCollection();
 		$this->assertSame(
 			[All::class, IsOnline::class, IsFriend::class, IsNotFriend::class],
@@ -53,12 +74,18 @@ class DefaultMemberCollectionTest extends IntegrationTestCase {
 		);
 	}
 
-	public function testCollectionExposesProfileSearchField(): void {
+	/**
+     * @return void
+     */
+    public function testCollectionExposesProfileSearchField(): void {
 		$collection = new DefaultMemberCollection();
 		$this->assertContains(ProfileDataSearchField::class, $collection->getSearchOptions());
 	}
 
-	public function testCollectionMenuIsEmpty(): void {
+	/**
+     * @return void
+     */
+    public function testCollectionMenuIsEmpty(): void {
 		$this->assertSame([], (new DefaultMemberCollection())->getMenu());
 	}
 }

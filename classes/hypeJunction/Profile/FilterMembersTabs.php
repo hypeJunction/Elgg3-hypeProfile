@@ -7,7 +7,11 @@ use Elgg\HooksRegistrationService\Hook;
 
 class FilterMembersTabs {
 
-	public function __invoke(Hook $hook) {
+	/**
+     * @param Hook $hook
+     * @return mixed
+     */
+    public function __invoke(Hook $hook) {
 		$remove = ['alpha', 'newest', 'popular', 'online'];
 
 		$tabs = $hook->getValue();

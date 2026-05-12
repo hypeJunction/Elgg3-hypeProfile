@@ -7,17 +7,29 @@ use Elgg\IntegrationTestCase;
 
 class AddValidationTokenTInviteUrlTest extends IntegrationTestCase {
 
-	public function getPluginID(): string {
+	/**
+     * @return string
+     */
+    public function getPluginID(): string {
 		return 'hypeprofile';
 	}
 
-	public function up(): void {
+	/**
+     * @return void
+     */
+    public function up(): void {
 	}
 
-	public function down(): void {
+	/**
+     * @return void
+     */
+    public function down(): void {
 	}
 
-	public function testHandlerAppendsTenCharacterEvToken(): void {
+	/**
+     * @return void
+     */
+    public function testHandlerAppendsTenCharacterEvToken(): void {
 		$hook = $this->getMockBuilder(Hook::class)->getMock();
 		$hook->method('getParam')->willReturnCallback(function ($key) {
 			return $key === 'email' ? 'invitee@example.com' : null;
@@ -32,7 +44,10 @@ class AddValidationTokenTInviteUrlTest extends IntegrationTestCase {
 		$this->assertSame('param', $result['existing'], 'pre-existing params must be preserved');
 	}
 
-	public function testTokenIsDeterministicPerEmail(): void {
+	/**
+     * @return void
+     */
+    public function testTokenIsDeterministicPerEmail(): void {
 		$buildResult = function (string $email): string {
 			$hook = $this->getMockBuilder(Hook::class)->getMock();
 			$hook->method('getParam')->willReturnCallback(fn($k) => $k === 'email' ? $email : null);

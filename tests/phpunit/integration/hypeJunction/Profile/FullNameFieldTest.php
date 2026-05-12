@@ -8,34 +8,55 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 
 class FullNameFieldTest extends IntegrationTestCase {
 
-	public function getPluginID(): string {
+	/**
+     * @return string
+     */
+    public function getPluginID(): string {
 		return 'hypeprofile';
 	}
 
-	public function up(): void {
+	/**
+     * @return void
+     */
+    public function up(): void {
 	}
 
-	public function down(): void {
+	/**
+     * @return void
+     */
+    public function down(): void {
 	}
 
-	public function testValidateRejectsMissingFirstName(): void {
+	/**
+     * @return void
+     */
+    public function testValidateRejectsMissingFirstName(): void {
 		$field = new FullNameField(['type' => 'profile/full_name', 'name' => 'name']);
 		$this->expectException(ValidationException::class);
 		$field->validate(['first_name' => '', 'last_name' => 'Doe']);
 	}
 
-	public function testValidateRejectsMissingLastName(): void {
+	/**
+     * @return void
+     */
+    public function testValidateRejectsMissingLastName(): void {
 		$field = new FullNameField(['type' => 'profile/full_name', 'name' => 'name']);
 		$this->expectException(ValidationException::class);
 		$field->validate(['first_name' => 'Jane', 'last_name' => '']);
 	}
 
-	public function testValidateAcceptsBothNames(): void {
+	/**
+     * @return void
+     */
+    public function testValidateAcceptsBothNames(): void {
 		$field = new FullNameField(['type' => 'profile/full_name', 'name' => 'name']);
 		$this->assertTrue($field->validate(['first_name' => 'Jane', 'last_name' => 'Doe']));
 	}
 
-	public function testRetrieveReadsFirstAndLastName(): void {
+	/**
+     * @return void
+     */
+    public function testRetrieveReadsFirstAndLastName(): void {
 		$user = $this->createUser();
 		$user->first_name = 'Jane';
 		$user->last_name = 'Doe';
@@ -46,7 +67,10 @@ class FullNameFieldTest extends IntegrationTestCase {
 		$this->assertSame(['first_name' => 'Jane', 'last_name' => 'Doe'], $value);
 	}
 
-	public function testRetrieveSplitsDisplayNameWhenComponentsMissing(): void {
+	/**
+     * @return void
+     */
+    public function testRetrieveSplitsDisplayNameWhenComponentsMissing(): void {
 		// createUser() seeds first_name/last_name via Faker; clear them so the
 		// fall-through "split name on space" branch is exercised.
 		$user = $this->createUser();
@@ -60,7 +84,10 @@ class FullNameFieldTest extends IntegrationTestCase {
 		$this->assertSame(['first_name' => 'Alice', 'last_name' => 'Wonderland'], $value);
 	}
 
-	public function testSaveWritesNameComponentsAndAbbreviates(): void {
+	/**
+     * @return void
+     */
+    public function testSaveWritesNameComponentsAndAbbreviates(): void {
 		$user = $this->createUser();
 
 		$field = new FullNameField(['type' => 'profile/full_name', 'name' => 'name']);
@@ -75,7 +102,10 @@ class FullNameFieldTest extends IntegrationTestCase {
 		$this->assertSame('Jane D.', $user->name);
 	}
 
-	public function testSaveTruncatesDisplayNameToFiftyChars(): void {
+	/**
+     * @return void
+     */
+    public function testSaveTruncatesDisplayNameToFiftyChars(): void {
 		$user = $this->createUser();
 
 		$field = new FullNameField(['type' => 'profile/full_name', 'name' => 'name']);
