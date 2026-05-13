@@ -1,6 +1,6 @@
 {
     "name": "hypejunction/hypeprofile",
-    "version": "1.4.15",
+    "version": "3.0.0",
     "type": "elgg-plugin",
     "description": "Extended profile functionalities for Elgg",
     "homepage": "http://hypejunction.com",
@@ -41,4 +41,3 @@
         }
     ]
 }
-
