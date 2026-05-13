@@ -1,43 +1,43 @@
 {
-	"name": "hypejunction/hypeprofile",
-	"version": "1.4.15",
-	"type": "elgg-plugin",
-	"description": "Extended profile functionalities for Elgg",
-	"homepage": "https://github.com/hypeJunction/hypeprofile",
-	"keywords": [
-		"elgg",
-		"plugin",
-		"users",
-		"profile"
-	],
-	"license": "GPL-2.0-or-later",
-	"authors": [
-		{
-			"name": "hypeJunction"
-		}
-	],
-	"extra": {
-		"installer-name": "hypeProfile"
-	},
-	"require": {
-		"composer/installers": "^2.0",
-		"php": ">=8.0",
-		"elgg/elgg": "~5.0.0",
-		"bower-asset/zxcvbn": "~4.4",
-		"bjeavons/zxcvbn-php": "~0.3"
-	},
-	"config": {
-		"platform": {
-			"php": "7.0"
-		},
-		"fxp-asset": {
-			"enabled": false
-		}
-	},
-	"repositories": [
-		{
-			"type": "composer",
-			"url": "https://asset-packagist.org"
-		}
-	]
+    "name": "hypejunction/hypeprofile",
+    "version": "5.0.0",
+    "type": "elgg-plugin",
+    "description": "Extended profile functionalities for Elgg",
+    "homepage": "https://github.com/hypeJunction/hypeprofile",
+    "keywords": [
+        "elgg",
+        "plugin",
+        "users",
+        "profile"
+    ],
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "hypeJunction"
+        }
+    ],
+    "extra": {
+        "installer-name": "hypeProfile"
+    },
+    "require": {
+        "composer/installers": "^2.0",
+        "php": ">=8.0",
+        "elgg/elgg": "~5.0.0",
+        "bower-asset/zxcvbn": "~4.4",
+        "bjeavons/zxcvbn-php": "~0.3"
+    },
+    "config": {
+        "platform": {
+            "php": "7.0"
+        },
+        "fxp-asset": {
+            "enabled": false
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
 }
