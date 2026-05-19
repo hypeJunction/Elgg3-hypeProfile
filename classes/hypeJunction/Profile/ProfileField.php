@@ -54,7 +54,7 @@ class ProfileField extends Field {
 				$fields[] = [
 					'#type' => 'access',
 					'name' => "accesslevel[$this->name]",
-					'value' => $annotations ? $annotations[0]->access_id : get_default_access($entity),
+					'value' => $annotations ? $annotations[0]->access_id : elgg_get_default_access($entity),
 					'entity' => $entity,
 					'class' => 'profile-access-input-field',
 				];
