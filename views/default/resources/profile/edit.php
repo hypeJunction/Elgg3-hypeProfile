@@ -4,7 +4,7 @@ $request = elgg_extract('request', $vars);
 /* @var $request \Elgg\Request */
 
 $username = elgg_extract('username', $vars);
-$entity = get_user_by_username($username);
+$entity = elgg_get_user_by_username($username);
 
 if (!$entity instanceof \ElggEntity) {
 	throw new \Elgg\Exceptions\Http\BadRequestException();

@@ -22,7 +22,7 @@ class IsAvailableUsername {
 		$username = trim($username);
 
 		$available = elgg_call(ELGG_IGNORE_ACCESS | ELGG_SHOW_DISABLED_ENTITIES, function () use ($username) {
-			return !get_user_by_username($username);
+			return !elgg_get_user_by_username($username);
 		});
 
 		$data = json_encode([
