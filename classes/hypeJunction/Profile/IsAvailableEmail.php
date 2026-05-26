@@ -16,21 +16,21 @@ class IsAvailableEmail {
 	 */
 	public function __invoke(Request $request) {
 
-		elgg_signed_request_gatekeeper();
+		\elgg_signed_request_gatekeeper();
 
 		$email = $request->getParam('email', '');
 		$email = trim($email);
 
-		$available = elgg_call(ELGG_IGNORE_ACCESS | ELGG_SHOW_DISABLED_ENTITIES, function () use ($email) {
+		$available = \elgg_call(ELGG_IGNORE_ACCESS | ELGG_SHOW_DISABLED_ENTITIES, function () use ($email) {
 			return !get_user_by_email($email);
 		});
 
 		$data = json_encode([
 			'email' => $email,
 			'available' => $available,
-			'error' => !$available ? elgg_echo('validation:error:type:emailaccount') : null,
+			'error' => !$available ? \elgg_echo('validation:error:type:emailaccount') : null,
 		]);
 
-		return elgg_ok_response($data);
+		return \elgg_ok_response($data);
 	}
 }

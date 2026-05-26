@@ -26,12 +26,12 @@ class RegistrationMiddleware {
 	 */
 	public function __invoke(Request $request) {
 
-		elgg_make_sticky_form('register');
+		\elgg_make_sticky_form('register');
 
 		$entity = new \ElggUser();
 		$subtype = get_input('subtype');
 		if ($subtype) {
-			$constructor = elgg_get_entity_class('user', $subtype);
+			$constructor = \elgg_get_entity_class('user', $subtype);
 			if ($constructor && class_exists($constructor) && is_subclass_of($constructor, \ElggUser::class)) {
 				$entity = new $constructor;
 			}
@@ -68,7 +68,7 @@ class RegistrationMiddleware {
 			try {
 				$field->validate($value);
 			} catch (ValidationException $ex) {
-				$errors[$field->name] = elgg_echo('validation:error', [$label, $ex->getMessage()]);
+				$errors[$field->name] = \elgg_echo('validation:error', [$label, $ex->getMessage()]);
 				continue;
 			}
 
@@ -100,22 +100,22 @@ class RegistrationMiddleware {
 		$first_name = ucfirst($first_name);
 		$last_name = ucfirst($last_name);
 
-		if (elgg_get_plugin_setting('last_name_abbr', 'hypeprofile')) {
+		if (\elgg_get_plugin_setting('last_name_abbr', 'hypeprofile')) {
 			$last_name = substr($last_name, 0, 1) . '.';
 		}
 
-		if (elgg_get_plugin_setting('first_last_name', 'hypeprofile')) {
+		if (\elgg_get_plugin_setting('first_last_name', 'hypeprofile')) {
 			if (!$first_name || !$last_name) {
-				throw new BadRequestException(elgg_echo('actions:register:error:first_last_name'));
+				throw new BadRequestException(\elgg_echo('actions:register:error:first_last_name'));
 			}
 
 			$request->setParam('name', "$first_name $last_name");
-		} else if (elgg_get_plugin_setting('autogen_name', 'hypeprofile')) {
+		} else if (\elgg_get_plugin_setting('autogen_name', 'hypeprofile')) {
 			$request->setParam('name', $email_username);
 		}
 
-		if (elgg_get_plugin_setting('autogen_username', 'hypeprofile') && !$username) {
-			$algo = elgg_get_plugin_setting('autogen_username_algo', 'hypeprofile', 'first_name_only');
+		if (\elgg_get_plugin_setting('autogen_username', 'hypeprofile') && !$username) {
+			$algo = \elgg_get_plugin_setting('autogen_username_algo', 'hypeprofile', 'first_name_only');
 			switch ($algo) {
 				case 'first_name_only' :
 					$username = $first_name ? : $email_username;
@@ -136,26 +136,26 @@ class RegistrationMiddleware {
 			$request->setParam('username', $username);
 		}
 
-		if (elgg_get_plugin_setting('autogen_password', 'hypeprofile')) {
+		if (\elgg_get_plugin_setting('autogen_password', 'hypeprofile')) {
 			$password = generate_random_cleartext_password();
 
 			$request->setParam('password', $password);
 			$request->setParam('password2', $password);
 		} else {
-			if ($min_strength = elgg_get_plugin_setting('min_password_strength', 'hypeprofile')) {
+			if ($min_strength = \elgg_get_plugin_setting('min_password_strength', 'hypeprofile')) {
 				$zxcvbn = new \ZxcvbnPhp\Zxcvbn();
 				$strength = $zxcvbn->passwordStrength($password);
 				if ($strength < $min_strength) {
-					throw new BadRequestException(elgg_echo('actions:register:error:password_strength'));
+					throw new BadRequestException(\elgg_echo('actions:register:error:password_strength'));
 				}
 			}
 
-			if (elgg_get_plugin_setting('hide_password_repeat', 'hypeprofile')) {
+			if (\elgg_get_plugin_setting('hide_password_repeat', 'hypeprofile')) {
 				$request->setParam('password2', $password);
 			}
 		}
 
-		elgg_register_event_handler('create', 'user', function(Event $event) use ($fields, $parameters) {
+		\elgg_register_event_handler('create', 'user', function(Event $event) use ($fields, $parameters) {
 
 			$entity = $event->getObject();
 			/* @var $entity \ElggUser */
@@ -226,8 +226,8 @@ class RegistrationMiddleware {
 		$username = preg_replace($blacklist, '', $username);
 		$username = str_replace($blacklist2, '.', $username);
 
-		return elgg_call(ELGG_IGNORE_ACCESS | ELGG_SHOW_DISABLED_ENTITIES, function() use ($username) {
-			$minlength = elgg_get_config('minusername') ? : 4;
+		return \elgg_call(ELGG_IGNORE_ACCESS | ELGG_SHOW_DISABLED_ENTITIES, function() use ($username) {
+			$minlength = \elgg_get_config('minusername') ? : 4;
 
 			if ($username) {
 				$fill = $minlength - strlen($username);
@@ -235,7 +235,7 @@ class RegistrationMiddleware {
 				$fill = 8;
 			}
 
-			$algo = elgg_get_plugin_setting('autogen_username_algo', 'hypeprofile', 'first_name_only');
+			$algo = \elgg_get_plugin_setting('autogen_username_algo', 'hypeprofile', 'first_name_only');
 			if ($algo == 'full_name' && $fill <= 0) {
 				$separator = '.';
 			} else {

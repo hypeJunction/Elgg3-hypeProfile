@@ -69,6 +69,6 @@ class FilterMembersTabsTest extends IntegrationTestCase {
 		}
 
 		$this->assertInstanceOf(\ElggMenuItem::class, $all);
-		$this->assertSame(elgg_generate_url('collection:user:user'), $all->getHref());
+		$this->assertSame(\elgg_generate_url('collection:user:user'), $all->getHref());
 	}
 }
