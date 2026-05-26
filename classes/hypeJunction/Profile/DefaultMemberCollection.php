@@ -29,7 +29,7 @@ class DefaultMemberCollection extends Collection {
 	 * @return string
 	 */
 	public function getDisplayName() {
-		return elgg_echo("collection:user:user");
+		return \elgg_echo("collection:user:user");
 	}
 
 	/**
@@ -76,7 +76,7 @@ class DefaultMemberCollection extends Collection {
 	 */
 	public function getListOptions(array $options = []) {
 		return array_merge([
-			'no_results' => elgg_echo("collection:user:user:no_results"),
+			'no_results' => \elgg_echo("collection:user:user:no_results"),
 			'full_view' => false,
 			'list_type' => 'list',
 			'list_class' => 'elgg-users',
@@ -89,7 +89,7 @@ class DefaultMemberCollection extends Collection {
 	 * @return string
 	 */
 	public function getURL() {
-		return elgg_generate_url($this->getId());
+		return \elgg_generate_url($this->getId());
 	}
 
 	/**

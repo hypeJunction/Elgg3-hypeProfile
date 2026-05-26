@@ -18,7 +18,7 @@ class ConfigureRegistratinRoute {
 
 		$conf = $hook->getValue();
 
-		$midddleware = (array) elgg_extract('middleware', $conf, []);
+		$midddleware = (array) \elgg_extract('middleware', $conf, []);
 		$midddleware[] = RegistrationMiddleware::class;
 
 		$conf['middleware'] = $midddleware;

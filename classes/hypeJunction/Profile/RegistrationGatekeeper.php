@@ -18,25 +18,25 @@ class RegistrationGatekeeper {
 	 */
 	public function __invoke(Request $request) {
 
-		if (elgg_is_logged_in()) {
-			$user = elgg_get_logged_in_user_entity();
+		if (\elgg_is_logged_in()) {
+			$user = \elgg_get_logged_in_user_entity();
 			$exception = new GatekeeperException();
 			$exception->setRedirectUrl($user->getURL());
 			throw $exception;
 		}
 
-		if (elgg_get_config('allow_registration') == false) {
-			throw new GatekeeperException(elgg_echo('registerdisabled'));
+		if (\elgg_get_config('allow_registration') == false) {
+			throw new GatekeeperException(\elgg_echo('registerdisabled'));
 		}
 
-		if (elgg_get_plugin_setting('email_validation', 'hypeprofile')) {
-			if (!elgg_http_validate_signed_url($request->getURL())) {
+		if (\elgg_get_plugin_setting('email_validation', 'hypeprofile')) {
+			if (!\elgg_http_validate_signed_url($request->getURL())) {
 				$params = $request->getParams();
 				unset($params['_route']);
 
-				$url = elgg_generate_url('account:preregister', $params);
+				$url = \elgg_generate_url('account:preregister', $params);
 
-				return elgg_redirect_response($url);
+				return \elgg_redirect_response($url);
 			}
 		}
 

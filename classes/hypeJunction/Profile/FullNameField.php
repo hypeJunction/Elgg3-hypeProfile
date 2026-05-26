@@ -14,7 +14,7 @@ class FullNameField extends Field {
 	 */
 	public function validate($value) {
 		if (empty($value['first_name']) || empty($value['last_name'])) {
-			throw new ValidationException(elgg_echo('validation:error:required'));
+			throw new ValidationException(\elgg_echo('validation:error:required'));
 		}
 
 		return true;
@@ -45,8 +45,8 @@ class FullNameField extends Field {
 	public function save(ElggEntity $entity, ParameterBag $parameters) {
 		$value = $parameters->get($this->name);
 
-		$entity->first_name = ucfirst(elgg_extract('first_name', $value));
-		$entity->last_name = ucfirst(elgg_extract('last_name', $value));
+		$entity->first_name = ucfirst(\elgg_extract('first_name', $value));
+		$entity->last_name = ucfirst(\elgg_extract('last_name', $value));
 		$entity->last_name_abbr = substr($entity->last_name, 0, 1) . '.';
 
 		$entity->name = substr(trim("$entity->first_name $entity->last_name_abbr"), 0, 50);

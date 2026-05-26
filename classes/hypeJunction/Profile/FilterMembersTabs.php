@@ -19,8 +19,8 @@ class FilterMembersTabs {
 
 		$tabs->add(\ElggMenuItem::factory([
 			'name' => 'all',
-			'text' => elgg_echo('collection:user:user'),
-			'href' => elgg_generate_url('collection:user:user'),
+			'text' => \elgg_echo('collection:user:user'),
+			'href' => \elgg_generate_url('collection:user:user'),
 			'priority' => 100,
 		]));
 

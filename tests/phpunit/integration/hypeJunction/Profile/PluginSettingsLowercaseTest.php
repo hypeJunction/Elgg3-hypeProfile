@@ -23,13 +23,13 @@ class PluginSettingsLowercaseTest extends IntegrationTestCase {
 	 * on a plugin setting.
 	 */
 	public function testLowercasePluginIdResolvesSettings(): void {
-		$plugin = elgg_get_plugin_from_id('hypeprofile');
+		$plugin = \elgg_get_plugin_from_id('hypeprofile');
 		$plugin->setSetting('integration_test_marker', 'lowercase_works');
 
 		try {
 			$this->assertSame(
 				'lowercase_works',
-				elgg_get_plugin_setting('integration_test_marker', 'hypeprofile')
+				\elgg_get_plugin_setting('integration_test_marker', 'hypeprofile')
 			);
 		} finally {
 			$plugin->unsetSetting('integration_test_marker');
@@ -41,8 +41,8 @@ class PluginSettingsLowercaseTest extends IntegrationTestCase {
 		// but the contract is the same: camelCase must not resolve to the lowercase
 		// plugin. This is the regression that silently broke every plugin-setting
 		// branch (e.g. "first_last_name") prior to the lowercase fix.
-		$camel = elgg_get_plugin_from_id('hypeProfile');
-		$lower = elgg_get_plugin_from_id('hypeprofile');
+		$camel = \elgg_get_plugin_from_id('hypeProfile');
+		$lower = \elgg_get_plugin_from_id('hypeprofile');
 
 		$this->assertInstanceOf(\ElggPlugin::class, $lower);
 		$this->assertNotEquals($lower, $camel);
@@ -50,12 +50,12 @@ class PluginSettingsLowercaseTest extends IntegrationTestCase {
 	}
 
 	public function testActivationDefaultSettingsArePresent(): void {
-		$this->assertTrue((bool) elgg_get_plugin_setting('email_validation', 'hypeprofile'));
-		$this->assertTrue((bool) elgg_get_plugin_setting('first_last_name', 'hypeprofile'));
-		$this->assertTrue((bool) elgg_get_plugin_setting('hide_password_repeat', 'hypeprofile'));
+		$this->assertTrue((bool) \elgg_get_plugin_setting('email_validation', 'hypeprofile'));
+		$this->assertTrue((bool) \elgg_get_plugin_setting('first_last_name', 'hypeprofile'));
+		$this->assertTrue((bool) \elgg_get_plugin_setting('hide_password_repeat', 'hypeprofile'));
 		$this->assertSame(
 			ProfileField::FIELD_PICKER,
-			elgg_get_plugin_setting('field_access', 'hypeprofile')
+			\elgg_get_plugin_setting('field_access', 'hypeprofile')
 		);
 	}
 }

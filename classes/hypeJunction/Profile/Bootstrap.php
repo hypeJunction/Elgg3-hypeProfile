@@ -50,26 +50,26 @@ class Bootstrap extends PluginBootstrap {
 
 		$this->elgg()->hooks->registerHandler('params', 'invite', AddValidationTokenTInviteUrl::class);
 
-		elgg_extend_view('input/text', 'forms/validation/username');
-		elgg_extend_view('input/email', 'forms/validation/email');
-		elgg_extend_view('input/password', 'forms/validation/password');
+		\elgg_extend_view('input/text', 'forms/validation/username');
+		\elgg_extend_view('input/email', 'forms/validation/email');
+		\elgg_extend_view('input/password', 'forms/validation/password');
 
-		elgg_extend_view('elgg.css', 'forms/register.css');
-		elgg_extend_view('elgg.css', 'profile/extras.css');
+		\elgg_extend_view('elgg.css', 'forms/register.css');
+		\elgg_extend_view('elgg.css', 'profile/extras.css');
 
-		if (elgg_is_active_plugin('members')) {
-			elgg_unregister_plugin_hook_handler('register', 'menu:filter:members', 'members_register_filter_menu');
+		if (\elgg_is_active_plugin('members')) {
+			\elgg_unregister_plugin_hook_handler('register', 'menu:filter:members', 'members_register_filter_menu');
 
-			elgg_unregister_route('collection:user:user:alpha');
-			elgg_unregister_route('collection:user:user:newest');
-			elgg_unregister_route('collection:user:user:online');
-			elgg_unregister_route('collection:user:user:popular');
-			elgg_unregister_route('search:user:user');
+			\elgg_unregister_route('collection:user:user:alpha');
+			\elgg_unregister_route('collection:user:user:newest');
+			\elgg_unregister_route('collection:user:user:online');
+			\elgg_unregister_route('collection:user:user:popular');
+			\elgg_unregister_route('search:user:user');
 		}
 
-		elgg_register_collection("collection:user:user", DefaultMemberCollection::class);
+		\elgg_register_collection("collection:user:user", DefaultMemberCollection::class);
 
-		elgg_register_plugin_hook_handler('register', 'menu:filter:members', FilterMembersTabs::class, 800);
+		\elgg_register_plugin_hook_handler('register', 'menu:filter:members', FilterMembersTabs::class, 800);
 	}
 
 	/**
@@ -80,7 +80,7 @@ class Bootstrap extends PluginBootstrap {
 	 * @return void
 	 */
 	public function ready() {
-		elgg_unextend_view('forms/usersettings/save', 'core/settings/account/name');
+		\elgg_unextend_view('forms/usersettings/save', 'core/settings/account/name');
 	}
 
 	/**

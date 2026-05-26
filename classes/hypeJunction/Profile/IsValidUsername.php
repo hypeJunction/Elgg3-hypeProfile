@@ -15,7 +15,7 @@ class IsValidUsername {
 	 */
 	public function __invoke(Request $request) {
 
-		elgg_signed_request_gatekeeper();
+		\elgg_signed_request_gatekeeper();
 
 		$username = $request->getParam('username', '');
 		$username = trim($username);
@@ -29,9 +29,9 @@ class IsValidUsername {
 		$data = json_encode(array(
 			'username' => $username,
 			'valid' => $valid,
-			'error' => !$valid ? elgg_echo('validation:error:type:validusername') : null,
+			'error' => !$valid ? \elgg_echo('validation:error:type:validusername') : null,
 		));
 
-		return elgg_ok_response($data);
+		return \elgg_ok_response($data);
 	}
 }
