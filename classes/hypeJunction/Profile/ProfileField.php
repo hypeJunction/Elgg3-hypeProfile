@@ -35,7 +35,7 @@ class ProfileField extends Field {
 			return '';
 		}
 
-		if (!elgg_view_exists("input/$this->type")) {
+		if (!\elgg_view_exists("input/$this->type")) {
 			return '';
 		}
 
@@ -44,10 +44,10 @@ class ProfileField extends Field {
 		$annotations = $this->getAnnotation($entity);
 
 		if ($context == self::CONTEXT_EDIT_FORM) {
-			$field_access_conf = elgg_get_plugin_setting('field_access', 'hypeprofile');
+			$field_access_conf = \elgg_get_plugin_setting('field_access', 'hypeprofile');
 
 			if ($field_access_conf == self::FIELD_PICKER) {
-				$class = elgg_extract_class($main, '', '#class');
+				$class = \elgg_extract_class($main, '', '#class');
 				unset($main['#class']);
 
 				$fields = [$main];
@@ -59,16 +59,16 @@ class ProfileField extends Field {
 					'class' => 'profile-access-input-field',
 				];
 
-				return elgg_view_field([
+				return \elgg_view_field([
 					'#type' => 'fieldset',
 					'#class' => $class,
 					'fields' => $fields,
 				]);
 			} else {
-				return elgg_view_field($main);
+				return \elgg_view_field($main);
 			}
 		} else {
-			return elgg_view_field($main);
+			return \elgg_view_field($main);
 		}
 	}
 
@@ -113,21 +113,21 @@ class ProfileField extends Field {
 
 		if (is_array($value)) {
 			array_walk_recursive($value, function (&$v) {
-				$v = elgg_html_decode($v);
+				$v = \elgg_html_decode($v);
 			});
 		} else {
-			$value = elgg_html_decode($value);
+			$value = \elgg_html_decode($value);
 		}
 
 		$entity->deleteAnnotations("profile:{$this->name}");
 
-		elgg_delete_metadata([
+		\elgg_delete_metadata([
 			'guid' => $entity->guid,
 			'metadata_name' => $this->name,
 			'limit' => false
 		]);
 
-		$field_access_conf = elgg_get_plugin_setting('field_access', 'hypeprofile');
+		$field_access_conf = \elgg_get_plugin_setting('field_access', 'hypeprofile');
 
 		if (!is_null($value) && ($value !== '')) {
 			$access_id = ACCESS_PRIVATE;
@@ -169,6 +169,6 @@ class ProfileField extends Field {
 	 * {@inheritdoc}
 	 */
 	public function label(ElggEntity $entity) {
-		return elgg_echo("profile:{$this->name}");
+		return \elgg_echo("profile:{$this->name}");
 	}
 }

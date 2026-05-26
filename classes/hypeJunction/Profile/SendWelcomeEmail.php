@@ -23,10 +23,10 @@ class SendWelcomeEmail {
 			return;
 		}
 
-		$text = elgg_echo('register:welcome_email', [], $user->language);
+		$text = \elgg_echo('register:welcome_email', [], $user->language);
 
 		if (!$text) {
-			$text = elgg_get_plugin_setting('welcome_email', 'hypeprofile');
+			$text = \elgg_get_plugin_setting('welcome_email', 'hypeprofile');
 		}
 
 		if (!$text) {
@@ -36,15 +36,15 @@ class SendWelcomeEmail {
 		$replacements = [
 			'{{name}}' => $user->first_name ? : $user->name,
 			'{{profile_url}}' => $user->getURL(),
-			'{{site_name}}' => elgg_get_site_entity()->name,
-			'{{site_url}}' => elgg_get_site_url(),
+			'{{site_name}}' => \elgg_get_site_entity()->name,
+			'{{site_url}}' => \elgg_get_site_url(),
 		];
 
 		foreach ($replacements as $pattern => $replacement) {
 			$text = str_replace($pattern, $replacement, $text);
 		}
 
-		$subject = elgg_echo('register:welcome_email:subject', [elgg_get_site_entity()->name]);
+		$subject = \elgg_echo('register:welcome_email:subject', [\elgg_get_site_entity()->name]);
 
 		notify_user($user->guid, 0, $subject, $text, [
 			'action' => 'validate',

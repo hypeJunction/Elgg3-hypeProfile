@@ -21,10 +21,10 @@ class RegisterAction {
 	 */
 	public function __invoke(Request $request) {
 
-		elgg_make_sticky_form('register');
+		\elgg_make_sticky_form('register');
 
-		if (!elgg_get_config('allow_registration')) {
-			return elgg_error_response(elgg_echo('registerdisabled'));
+		if (!\elgg_get_config('allow_registration')) {
+			return \elgg_error_response(\elgg_echo('registerdisabled'));
 		}
 
 		$subtype = $request->getParam('subtype', 'user');
@@ -39,7 +39,7 @@ class RegisterAction {
 		$email = trim($email);
 
 		try {
-			$validation = elgg_validate_registration_data($username, [$password, $password2], $name, $email);
+			$validation = \elgg_validate_registration_data($username, [$password, $password2], $name, $email);
 			$failures = $validation->getFailures();
 			if ($failures) {
 				$messages = array_map(function (\Elgg\Validation\ValidationResult $e) {
@@ -51,13 +51,13 @@ class RegisterAction {
 
 			$guid = register_user($username, $password, $name, $email, false, $subtype);
 			if (!$guid) {
-				throw new RegistrationException(elgg_echo('registerbad'));
+				throw new RegistrationException(\elgg_echo('registerbad'));
 			}
 
 			$new_user = get_user($guid);
 
 			$fail = function () use ($new_user) {
-				elgg_call(ELGG_IGNORE_ACCESS, function () use ($new_user) {
+				\elgg_call(ELGG_IGNORE_ACCESS, function () use ($new_user) {
 					$new_user->delete();
 				});
 			};
@@ -70,8 +70,8 @@ class RegisterAction {
 				$params = $request->getParams();
 				$params['user'] = $new_user;
 
-				if (!elgg_trigger_event_results('register', 'user', $params, true)) {
-					throw new RegistrationException(elgg_echo('registerbad'));
+				if (!\elgg_trigger_event_results('register', 'user', $params, true)) {
+					throw new RegistrationException(\elgg_echo('registerbad'));
 				}
 			} catch (\Exception $e) {
 				// Catch all exception to make sure there are no incomplete user entities left behind
@@ -79,7 +79,7 @@ class RegisterAction {
 				throw $e;
 			}
 
-			elgg_clear_sticky_form('register');
+			\elgg_clear_sticky_form('register');
 
 			$response_data = [
 				'user' => $new_user,
@@ -87,23 +87,23 @@ class RegisterAction {
 
 			if (!$new_user->isEnabled()) {
 				// Plugins can alter forwarding URL by registering for 'response', 'action:register' hook
-				return elgg_ok_response($response_data);
+				return \elgg_ok_response($response_data);
 			}
 
 			try {
 				login($new_user);
 				// set forward url
-				$forward_url = _elgg_get_login_forward_url($request, $new_user);
-				$response_message = elgg_echo('registerok', [elgg_get_site_entity()->getDisplayName()]);
+				$forward_url = \_elgg_get_login_forward_url($request, $new_user);
+				$response_message = \elgg_echo('registerok', [\elgg_get_site_entity()->getDisplayName()]);
 
-				return elgg_ok_response($response_data, $response_message, $forward_url);
+				return \elgg_ok_response($response_data, $response_message, $forward_url);
 			} catch (LogicException $e) {
 				// if exception thrown, this probably means there is a validation
 				// plugin that has disabled the user
-				return elgg_error_response($e->getMessage(), REFERRER, $e->getCode() ? : ELGG_HTTP_UNAUTHORIZED);
+				return \elgg_error_response($e->getMessage(), REFERRER, $e->getCode() ? : ELGG_HTTP_UNAUTHORIZED);
 			}
 		} catch (RegistrationException $r) {
-			return elgg_error_response($r->getMessage(), REFERRER, $r->getCode() ? : ELGG_HTTP_BAD_REQUEST);
+			return \elgg_error_response($r->getMessage(), REFERRER, $r->getCode() ? : ELGG_HTTP_BAD_REQUEST);
 		}
 
 	}

@@ -18,7 +18,7 @@ class AddValidationTokenTInviteUrl {
 		$email = $event->getParam('email');
 
 		// Email validation token
-		$token = elgg_build_hmac(['email' => $email])->getToken();
+		$token = \elgg_build_hmac(['email' => $email])->getToken();
 		$token = substr($token, 0, 10);
 
 		$params = $event->getValue();

@@ -20,7 +20,7 @@ class RegistrationGatekeeperTest extends IntegrationTestCase {
 
 	public function testThrowsWhenUserAlreadyLoggedIn(): void {
 		$user = $this->createUser();
-		elgg_get_session()->setLoggedInUser($user);
+		\elgg_get_session()->setLoggedInUser($user);
 
 		try {
 			$gatekeeper = new RegistrationGatekeeper();
@@ -31,13 +31,13 @@ class RegistrationGatekeeperTest extends IntegrationTestCase {
 			$this->expectException(GatekeeperException::class);
 			$gatekeeper($request);
 		} finally {
-			elgg_get_session()->removeLoggedInUser();
+			\elgg_get_session()->removeLoggedInUser();
 		}
 	}
 
 	public function testThrowsWhenRegistrationIsDisabled(): void {
-		$previous = elgg_get_config('allow_registration');
-		elgg_set_config('allow_registration', false);
+		$previous = \elgg_get_config('allow_registration');
+		\elgg_set_config('allow_registration', false);
 
 		try {
 			$gatekeeper = new RegistrationGatekeeper();
@@ -46,20 +46,20 @@ class RegistrationGatekeeperTest extends IntegrationTestCase {
 				->getMock();
 
 			$this->expectException(GatekeeperException::class);
-			$this->expectExceptionMessage(elgg_echo('registerdisabled'));
+			$this->expectExceptionMessage(\elgg_echo('registerdisabled'));
 			$gatekeeper($request);
 		} finally {
-			elgg_set_config('allow_registration', $previous);
+			\elgg_set_config('allow_registration', $previous);
 		}
 	}
 
 	public function testUnpacksQueryParametersBackOntoRequest(): void {
-		$plugin = elgg_get_plugin_from_id('hypeprofile');
+		$plugin = \elgg_get_plugin_from_id('hypeprofile');
 		$emailValidationPrev = $plugin->getSetting('email_validation');
 		$plugin->setSetting('email_validation', 0);
 
-		$previous = elgg_get_config('allow_registration');
-		elgg_set_config('allow_registration', true);
+		$previous = \elgg_get_config('allow_registration');
+		\elgg_set_config('allow_registration', true);
 
 		try {
 			$received = [];
@@ -80,7 +80,7 @@ class RegistrationGatekeeperTest extends IntegrationTestCase {
 			$this->assertSame('42', $received['friend_guid'] ?? null);
 			$this->assertSame('abcd', $received['invitecode'] ?? null);
 		} finally {
-			elgg_set_config('allow_registration', $previous);
+			\elgg_set_config('allow_registration', $previous);
 			$plugin->setSetting('email_validation', $emailValidationPrev);
 		}
 	}

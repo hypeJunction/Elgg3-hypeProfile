@@ -33,7 +33,7 @@ class DefaultMemberCollectionTest extends IntegrationTestCase {
 
 	public function testCollectionUrlMatchesRoute(): void {
 		$collection = new DefaultMemberCollection();
-		$expected = elgg_generate_url('collection:user:user');
+		$expected = \elgg_generate_url('collection:user:user');
 		$this->assertSame($expected, $collection->getURL());
 	}
 
