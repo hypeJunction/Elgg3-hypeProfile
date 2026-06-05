@@ -23,7 +23,6 @@
         "composer/installers": "^2.0",
         "php": ">=8.1",
         "elgg/elgg": "~6.1.0",
-        "bower-asset/zxcvbn": "~4.4",
         "bjeavons/zxcvbn-php": "~0.3"
     },
     "config": {
@@ -33,11 +32,5 @@
         "fxp-asset": {
             "enabled": false
         }
-    },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
-        }
-    ]
+    }
 }
