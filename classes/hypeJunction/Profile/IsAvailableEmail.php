@@ -22,7 +22,7 @@ class IsAvailableEmail {
 		$email = trim($email);
 
 		$available = elgg_call(ELGG_IGNORE_ACCESS | ELGG_SHOW_DISABLED_ENTITIES, function () use ($email) {
-			return !get_user_by_email($email);
+			return !elgg_get_user_by_email($email);
 		});
 
 		$data = json_encode([

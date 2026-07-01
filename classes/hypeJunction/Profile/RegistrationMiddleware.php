@@ -255,7 +255,7 @@ class RegistrationMiddleware {
 					$username = "$username$separator$iterator";
 				}
 
-				$user = get_user_by_username($username);
+				$user = elgg_get_user_by_username($username);
 				$available = !$user;
 
 				try {

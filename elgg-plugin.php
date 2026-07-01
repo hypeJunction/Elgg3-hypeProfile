@@ -16,7 +16,7 @@ return [
 	'bootstrap' => \hypeJunction\Profile\Bootstrap::class,
 	'views' => [
 		'default' => [
-			'zxcvbn/' => $path . '/vendor/bower-asset/zxcvbn/dist/',
+			'zxcvbn/' => $path . '/vendors/zxcvbn/',
 		]
 	],
 	'actions' => [
